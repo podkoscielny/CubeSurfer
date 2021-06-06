@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPooler : MonoBehaviour
+public class ObjectPooler : Singleton<ObjectPooler>
 {
     [SerializeField] GameObject obstaclePrefab;
     [SerializeField] int poolSize;
@@ -10,21 +10,6 @@ public class ObjectPooler : MonoBehaviour
     private Queue<GameObject> _obstaclesPool;
 
     private GameManager _gameManager;
-    public static ObjectPooler Instance { get; private set; }
-
-    #region Singleton
-    void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-    #endregion
 
     void Start()
     {

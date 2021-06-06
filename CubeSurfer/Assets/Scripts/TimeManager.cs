@@ -7,22 +7,6 @@ public class TimeManager : MonoBehaviour
     //private const float slowdownLength = 2f;
     private const float SLOWDOWN_FACTOR = 0.05f;
 
-    public static TimeManager Instance { get; private set; }
-
-    #region Singleton
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-    #endregion
-
     #region Event Subscribers
 
     private void OnEnable()

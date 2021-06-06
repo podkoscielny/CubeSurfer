@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
     //Theme properties
     public float CurrentSpeed { get; set; }
@@ -34,27 +34,11 @@ public class GameManager : MonoBehaviour
     private TextMeshProUGUI _scoreText;
     private TextMeshProUGUI _levelText;
 
-    public static GameManager Instance { get; private set; }
-
-    void Awake()
+    protected override void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
+        isDestroyableOnLoad = false;
+        base.Awake();
     }
-
-    //protected override void Awake()
-    //{
-    //    isDestroyableOnLoad = false;
-    //    base.Awake();
-    //}
 
     #region Event Subscribers
     private void OnEnable()
