@@ -41,7 +41,7 @@ public class SceneController : MonoBehaviour
     {
         transition.SetTrigger("Hide");
 
-        yield return new WaitForSeconds(TRANSITION_TIME);
+        yield return new WaitForSecondsRealtime(TRANSITION_TIME);
 
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
         progressBar.gameObject.SetActive(true);

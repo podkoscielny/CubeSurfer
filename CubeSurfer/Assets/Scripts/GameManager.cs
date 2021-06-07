@@ -80,8 +80,8 @@ public class GameManager : Singleton<GameManager>
         IsHighscoreSet = false;
         Level = 1;
         _score = 0;
-        Time.timeScale = 1f;
-        Time.fixedDeltaTime = 0.02f;
+        //Time.timeScale = 1f;
+        //Time.fixedDeltaTime = 0.02f;
 
         SkyboxMaterial.SetColor("_SkyGradientTop", SkyboxTopColor);
         SkyboxMaterial.SetColor("_SkyGradientBottom", SkyboxBottomColor);
