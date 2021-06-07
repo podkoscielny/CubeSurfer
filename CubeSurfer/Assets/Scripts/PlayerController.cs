@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
 
     void ChangeLane()
     {
-        if (!_isOnGround || _gameManager.IsGameOver) return;
+        if (!_isOnGround || _gameManager.IsGameOver || !_gameManager.HasGameStarted) return;
 
         if (Input.GetKeyDown(KeyCode.A) && _currentSide != Side.Left)
         {

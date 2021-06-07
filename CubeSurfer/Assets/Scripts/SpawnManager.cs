@@ -11,22 +11,17 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] GameObject[] wavePrefabs;
 
     private ObjectPooler _objectPooler;
-    private GameManager _gameManager;
     private MoveTowardPlayer _multiplierScript;
 
     private int _currentWaveIndex = 0;
     private float _speedMultiplier = 1f;
-    private const float START_DELAY = 2f;
     private const float INCREASE_MULTIPLIER_BY = 0.5f;
 
     private void Start()
     {
         _objectPooler = ObjectPooler.Instance;
-        _gameManager = GameManager.Instance;
 
         _multiplierScript = pointMultiplier.GetComponent<MoveTowardPlayer>();
-
-        Invoke(nameof(SpawnWave), START_DELAY);
     }
 
     #region Event Subscribers
@@ -34,11 +29,13 @@ public class SpawnManager : MonoBehaviour
     private void OnEnable()
     {
         MoveObstacleToPool.OnLevelup += SpawnWave;
+        StartGameCamera.OnGameStart += SpawnWave;
     }
 
     private void OnDisable()
     {
         MoveObstacleToPool.OnLevelup -= SpawnWave;
+        StartGameCamera.OnGameStart -= SpawnWave;
     }
 
     #endregion
@@ -62,8 +59,6 @@ public class SpawnManager : MonoBehaviour
             _currentWaveIndex = 0;
             _speedMultiplier += INCREASE_MULTIPLIER_BY;
         }
-
-        if (!_gameManager.HasGameStarted) _gameManager.HasGameStarted = true;
     }
 
     private void InstantiateObstacles(GameObject waveToSpawn, float obstacleSpeed)

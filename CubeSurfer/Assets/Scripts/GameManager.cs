@@ -17,7 +17,7 @@ public class GameManager : Singleton<GameManager>
 
     //Game state
     public bool IsGameOver { get; private set; } = false;
-    public bool HasGameStarted { get; set; } = false;
+    public bool HasGameStarted { get; private set; } = false;
 
     //Score and level
     public int ScoreMultiplier { get; set; } = 1;
@@ -45,12 +45,14 @@ public class GameManager : Singleton<GameManager>
     {
         MoveObstacleToPool.OnLevelup += LevelUp;
         PlayerController.OnGameOver += GameOver;
+        StartGameCamera.OnGameStart += StartGame;
     }
 
     private void OnDisable()
     {
         MoveObstacleToPool.OnLevelup -= LevelUp;
         PlayerController.OnGameOver -= GameOver;
+        StartGameCamera.OnGameStart -= StartGame;
     }
     #endregion
 
@@ -94,6 +96,8 @@ public class GameManager : Singleton<GameManager>
     }
 
     public void LoadHighscores(List<Highscore> highscores) => Highscores = highscores;
+
+    private void StartGame() => HasGameStarted = true;
 
     private void GameOver()
     {
