@@ -7,17 +7,16 @@ public class SpawnManager : MonoBehaviour
 {
     public static event Action<WaveController, float> OnEnvironmentChange;
 
+    [SerializeField] GameObject pointMultiplier;
+    [SerializeField] GameObject[] wavePrefabs;
+
     private ObjectPooler _objectPooler;
     private GameManager _gameManager;
-
-    [SerializeField] GameObject pointMultiplier;
     private MoveTowardPlayer _multiplierScript;
 
-    [SerializeField] GameObject[] wavePrefabs;
     private int _currentWaveIndex = 0;
-
     private float _speedMultiplier = 1f;
-    private const float SPAWN_DELAY = 3f;
+    private const float START_DELAY = 2f;
     private const float INCREASE_MULTIPLIER_BY = 0.5f;
 
     private void Start()
@@ -27,7 +26,7 @@ public class SpawnManager : MonoBehaviour
 
         _multiplierScript = pointMultiplier.GetComponent<MoveTowardPlayer>();
 
-        SpawnWave();
+        Invoke(nameof(SpawnWave), START_DELAY);
     }
 
     #region Event Subscribers
@@ -44,17 +43,13 @@ public class SpawnManager : MonoBehaviour
 
     #endregion
 
-    private void SpawnWave() => StartCoroutine(SetWave());
-
-    IEnumerator SetWave()
+    private void SpawnWave()
     {
         GameObject waveToSpawn = wavePrefabs[_currentWaveIndex];
         WaveController waveController = waveToSpawn.GetComponent<WaveController>();
         float obstacleSpeed = waveController.speed * _speedMultiplier;
 
         OnEnvironmentChange?.Invoke(waveController, obstacleSpeed);
-
-        yield return new WaitForSeconds(SPAWN_DELAY);
 
         InstantiateObstacles(waveToSpawn, obstacleSpeed);
         if (waveController.hasMultiplier)
