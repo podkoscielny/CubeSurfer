@@ -20,7 +20,8 @@ public class EnvironmentController : MonoBehaviour
     private AudioSource _environmentAudio;
     private const float SWITCH_ON_PITCH = 1.4f;
     private const float SWITCH_OFF_PITCH = 0.8f;
-    private const float COLOR_CHANGE_SPEED = 0.3f;
+    private const float COLOR_CHANGE_SPEED = 0.35f;
+    private const float LIGHT_CHANGE_SPEED = 0.18f;
     private const float GAMEOVER_BACKGROUND_INTENSITY = 0.4f;
 
     #region Event Subscribers
@@ -41,6 +42,9 @@ public class EnvironmentController : MonoBehaviour
     {
         _gameManager = GameManager.Instance;
         _environmentAudio = GetComponent<AudioSource>();
+
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.02f;
 
         SetThemeColors();
     }
@@ -113,6 +117,7 @@ public class EnvironmentController : MonoBehaviour
 
         while (_gameManager.SkyboxMaterial.GetColor("_SkyGradientTop") != desiredTopColor && _gameManager.SkyboxMaterial.GetColor("_SkyGradientBottom") != desiredBottomColor)
         {
+            Debug.Log("Color");
             tick += Time.unscaledDeltaTime * COLOR_CHANGE_SPEED;
             _gameManager.SkyboxMaterial.SetColor("_SkyGradientTop", Color.Lerp(currentTopColor, desiredTopColor, tick));
             _gameManager.SkyboxMaterial.SetColor("_SkyGradientBottom", Color.Lerp(currentBottomColor, desiredBottomColor, tick));
@@ -127,7 +132,8 @@ public class EnvironmentController : MonoBehaviour
 
         while (directionalLight.intensity != desiredIntensity)
         {
-            tick += Time.unscaledDeltaTime * COLOR_CHANGE_SPEED;
+            Debug.Log("Light");
+            tick += Time.unscaledDeltaTime * LIGHT_CHANGE_SPEED;
             directionalLight.intensity = Mathf.Lerp(directionalLight.intensity, desiredIntensity, tick);
             yield return null;
         }
