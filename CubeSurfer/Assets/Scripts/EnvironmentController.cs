@@ -114,7 +114,6 @@ public class EnvironmentController : MonoBehaviour
 
         while (_gameManager.SkyboxMaterial.GetColor("_SkyGradientTop") != desiredTopColor && _gameManager.SkyboxMaterial.GetColor("_SkyGradientBottom") != desiredBottomColor)
         {
-            Debug.Log("Color");
             tick += Time.unscaledDeltaTime * COLOR_CHANGE_SPEED;
             _gameManager.SkyboxMaterial.SetColor("_SkyGradientTop", Color.Lerp(currentTopColor, desiredTopColor, tick));
             _gameManager.SkyboxMaterial.SetColor("_SkyGradientBottom", Color.Lerp(currentBottomColor, desiredBottomColor, tick));
@@ -129,7 +128,6 @@ public class EnvironmentController : MonoBehaviour
 
         while (directionalLight.intensity != desiredIntensity)
         {
-            Debug.Log("Light");
             tick += Time.unscaledDeltaTime * LIGHT_CHANGE_SPEED;
             directionalLight.intensity = Mathf.Lerp(directionalLight.intensity, desiredIntensity, tick);
             yield return null;
