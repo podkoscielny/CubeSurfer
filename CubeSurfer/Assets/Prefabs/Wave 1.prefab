@@ -493,11 +493,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  areLightsTurnedOn: 0
+  areLightsTurnedOn: 1
   hasMultiplier: 1
   multipliersPositon: {x: 0, y: 1.57, z: 323.6}
-  lightIntensity: 1
-  backgroundColorIntensity: 1
+  lightIntensity: 0.7
+  backgroundColorIntensity: 0.7
 --- !u!1 &9220663544177896367
 GameObject:
   m_ObjectHideFlags: 0

@@ -67,7 +67,7 @@ public class EnvironmentController : MonoBehaviour
     void SetGlobalProperties(WaveController waveController, float obstacleSpeed)
     {
         // Set global properties based on Wave's unique properties
-        directionalLight.intensity = waveController.lightIntensity;
+        StartCoroutine(ChangeLightIntensity(waveController.lightIntensity));
         _gameManager.CurrentSpeed = obstacleSpeed;
 
         if (!waveController.areLightsTurnedOn && lamps.activeInHierarchy)
@@ -117,6 +117,18 @@ public class EnvironmentController : MonoBehaviour
             _gameManager.SkyboxMaterial.SetColor("_SkyGradientTop", Color.Lerp(currentTopColor, desiredTopColor, tick));
             _gameManager.SkyboxMaterial.SetColor("_SkyGradientBottom", Color.Lerp(currentBottomColor, desiredBottomColor, tick));
             RenderSettings.fogColor = Color.Lerp(currentFogColor, desiredFogColor, tick);
+            yield return null;
+        }
+    }
+
+    IEnumerator ChangeLightIntensity(float desiredIntensity)
+    {
+        float tick = 0f;
+
+        while (directionalLight.intensity != desiredIntensity)
+        {
+            tick += Time.unscaledDeltaTime * COLOR_CHANGE_SPEED;
+            directionalLight.intensity = Mathf.Lerp(directionalLight.intensity, desiredIntensity, tick);
             yield return null;
         }
     }
