@@ -43,9 +43,6 @@ public class EnvironmentController : MonoBehaviour
         _gameManager = GameManager.Instance;
         _environmentAudio = GetComponent<AudioSource>();
 
-        Time.timeScale = 1f;
-        Time.fixedDeltaTime = 0.02f;
-
         SetThemeColors();
     }
 

@@ -493,7 +493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  areLightsTurnedOn: 1
+  areLightsTurnedOn: 0
   hasMultiplier: 1
   multipliersPositon: {x: 0, y: 1.57, z: 323.6}
   lightIntensity: 1

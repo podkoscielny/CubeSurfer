@@ -13,7 +13,6 @@ public class MainMenu : MonoBehaviour
         _gameManager = GameManager.Instance;
 
         SetMenuTheme();
-        if (Time.timeScale != 1) SetTimescale();
     }
 
     private void SetMenuTheme()
@@ -23,11 +22,5 @@ public class MainMenu : MonoBehaviour
             RenderSettings.skybox = _gameManager.SkyboxMaterial;
             cubeRenderer.material = _gameManager.PlayerMaterial;
         }
-    }
-
-    private void SetTimescale()
-    {
-        Time.timeScale = 1;
-        Time.fixedDeltaTime = 0.02f;
     }
 }

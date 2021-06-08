@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimeManager : MonoBehaviour
+public class TimeManager : Singleton<TimeManager>
 {
-    //private const float slowdownLength = 2f;
     private const float SLOWDOWN_FACTOR = 0.05f;
 
     #region Event Subscribers
@@ -21,11 +20,13 @@ public class TimeManager : MonoBehaviour
 
     #endregion
 
-    //void Update()
-    //{
-    //    Time.timeScale += (1f / slowdownLength) * Time.unscaledDeltaTime;
-    //    Time.timeScale = Mathf.Clamp(Time.timeScale, 0f, 1f);
-    //}
+    private void Start() => ResetTime();
+
+    void ResetTime()
+    {
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.02f;
+    }
 
     void SlowDownTheTime()
     {
