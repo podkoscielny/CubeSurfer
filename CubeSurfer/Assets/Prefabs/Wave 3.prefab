@@ -719,7 +719,7 @@ MonoBehaviour:
   hasMultiplier: 0
   multipliersPositon: {x: 0, y: 0, z: 0}
   lightIntensity: 1.3
-  backgroundColorIntensity: 1.3
+  backgroundColorIntensity: 0.9
 --- !u!1 &9220663544177896367
 GameObject:
   m_ObjectHideFlags: 0
