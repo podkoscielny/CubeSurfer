@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using TMPro;
 
 [System.Serializable]
@@ -20,11 +21,12 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] TMP_Dropdown resolutionDropdown;
     [SerializeField] TMP_Dropdown graphicsDropdown;
     [SerializeField] TMP_Dropdown themeDropdown;
+    [SerializeField] RenderPipelineAsset[] qualityLevels;
+    [SerializeField] List<ThemeColor> themes;
 
     private GameManager _gameManager;
 
     private Resolution[] _resolutions;
-    [SerializeField] List<ThemeColor> themes;
 
     void Start()
     {
@@ -35,7 +37,11 @@ public class SettingsMenu : MonoBehaviour
         SetResolutionOptions();
     }
 
-    public void SetQuality(int qualityIndex) => QualitySettings.SetQualityLevel(qualityIndex);
+    public void SetQuality(int qualityIndex)
+    {
+        QualitySettings.SetQualityLevel(qualityIndex);
+        QualitySettings.renderPipeline = qualityLevels[qualityIndex];
+    }
 
     public void SetResolution(int resolutionIndex)
     {

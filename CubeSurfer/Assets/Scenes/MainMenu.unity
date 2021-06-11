@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: ed27e1245718c464cb0e53679fe7dc45,
     type: 2}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -6635,6 +6635,10 @@ MonoBehaviour:
   resolutionDropdown: {fileID: 1111644615}
   graphicsDropdown: {fileID: 1635502633}
   themeDropdown: {fileID: 1373720567}
+  qualityLevels:
+  - {fileID: 11400000, guid: d685221559ab13d41b2d73b5d51faab7, type: 2}
+  - {fileID: 11400000, guid: c2b0c906320319a4b93d49c144885f26, type: 2}
+  - {fileID: 11400000, guid: f4160a42536940947a924120482a497c, type: 2}
   themes:
   - name: Cloudy
     skyboxMaterial: {fileID: 2100000, guid: 56113b3b655ab7349bab4d7d405c258a, type: 2}
