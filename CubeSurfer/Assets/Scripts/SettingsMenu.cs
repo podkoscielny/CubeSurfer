@@ -17,11 +17,10 @@ public class ThemeColor
 
 public class SettingsMenu : MonoBehaviour
 {
-    [SerializeField] Renderer cubeRenderer; 
+    [SerializeField] Renderer cubeRenderer;
     [SerializeField] TMP_Dropdown resolutionDropdown;
     [SerializeField] TMP_Dropdown graphicsDropdown;
     [SerializeField] TMP_Dropdown themeDropdown;
-    [SerializeField] RenderPipelineAsset[] qualityLevels;
     [SerializeField] List<ThemeColor> themes;
 
     private GameManager _gameManager;
@@ -37,11 +36,7 @@ public class SettingsMenu : MonoBehaviour
         SetResolutionOptions();
     }
 
-    public void SetQuality(int qualityIndex)
-    {
-        QualitySettings.SetQualityLevel(qualityIndex);
-        QualitySettings.renderPipeline = qualityLevels[qualityIndex];
-    }
+    public void SetQuality(int qualityIndex) => QualitySettings.SetQualityLevel(qualityIndex);
 
     public void SetResolution(int resolutionIndex)
     {
