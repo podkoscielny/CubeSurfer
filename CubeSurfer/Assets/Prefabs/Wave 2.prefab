@@ -496,7 +496,7 @@ MonoBehaviour:
   areLightsTurnedOn: 0
   hasMultiplier: 0
   multipliersPositon: {x: 0, y: 0, z: 0}
-  lightIntensity: 1.35
+  lightIntensity: 1.7
   backgroundColorIntensity: 0.95
 --- !u!1 &9220663544177896367
 GameObject:
