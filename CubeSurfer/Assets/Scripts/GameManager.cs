@@ -63,11 +63,10 @@ public class GameManager : Singleton<GameManager>
         if (HasGameStarted && !IsGameOver && _scoreText != null) UpdateScore();
     }
 
-    public void SetTheme(Material skyboxMaterial, Color fogColor, Color lightingGradient, Material groundMaterial, Material playerMaterial) // set colors in options menu
+    public void SetTheme(Material skyboxMaterial, Color fogColor, Material groundMaterial, Material playerMaterial) // set colors in options menu
     {
         SkyboxMaterial = skyboxMaterial;
         FogColor = fogColor;
-        LightingGradient = lightingGradient;
         GroundMaterial = groundMaterial;
         PlayerMaterial = playerMaterial;
 

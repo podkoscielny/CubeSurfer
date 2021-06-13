@@ -52,7 +52,6 @@ public class EnvironmentController : MonoBehaviour
         {
             RenderSettings.skybox = _gameManager.SkyboxMaterial;
             RenderSettings.fogColor = _gameManager.FogColor;
-            RenderSettings.ambientGroundColor = _gameManager.LightingGradient;
             player.GetComponent<Renderer>().material = _gameManager.PlayerMaterial;
             ground.GetComponent<Renderer>().material = _gameManager.GroundMaterial;
         }
@@ -61,7 +60,7 @@ public class EnvironmentController : MonoBehaviour
             Material playerMaterial = player.GetComponent<Renderer>().material;
             Material groundMaterial = ground.GetComponent<Renderer>().material;
 
-            _gameManager.SetTheme(RenderSettings.skybox, RenderSettings.fogColor, RenderSettings.ambientGroundColor, groundMaterial, playerMaterial);
+            _gameManager.SetTheme(RenderSettings.skybox, RenderSettings.fogColor, groundMaterial, playerMaterial);
         }
     }
 

@@ -51,7 +51,7 @@ public class SettingsMenu : MonoBehaviour
         RenderSettings.skybox = theme.skyboxMaterial;
         cubeRenderer.material = theme.playerMaterial;
 
-        _gameManager.SetTheme(theme.skyboxMaterial, theme.fogColor, theme.lightingGradient, theme.groundMaterial, theme.playerMaterial);
+        _gameManager.SetTheme(theme.skyboxMaterial, theme.fogColor, theme.groundMaterial, theme.playerMaterial);
     }
 
     private void SetQualityOptions()
