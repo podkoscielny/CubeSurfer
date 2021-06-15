@@ -12,6 +12,8 @@ public class EnvironmentController : MonoBehaviour
     [SerializeField] Light directionalLight;
     [SerializeField] GameObject player;
     [SerializeField] GameObject ground;
+    [SerializeField] Camera mainCamera;
+    [SerializeField] Camera startCamera;
 
     [Header("Audio")]
     [SerializeField] AudioClip switchOnAudio;
@@ -48,9 +50,10 @@ public class EnvironmentController : MonoBehaviour
 
     void SetThemeColors()
     {
-        if (_gameManager.SkyboxMaterial != null)
+        if (_gameManager.PlayerMaterial != null)
         {
-            RenderSettings.skybox = _gameManager.SkyboxMaterial;
+            mainCamera.backgroundColor = _gameManager.BackgroundColor;
+            startCamera.backgroundColor = _gameManager.BackgroundColor;
             RenderSettings.fogColor = _gameManager.FogColor;
             player.GetComponent<Renderer>().material = _gameManager.PlayerMaterial;
             ground.GetComponent<Renderer>().material = _gameManager.GroundMaterial;
@@ -60,7 +63,7 @@ public class EnvironmentController : MonoBehaviour
             Material playerMaterial = player.GetComponent<Renderer>().material;
             Material groundMaterial = ground.GetComponent<Renderer>().material;
 
-            _gameManager.SetTheme(RenderSettings.skybox, RenderSettings.fogColor, groundMaterial, playerMaterial);
+            _gameManager.SetTheme(mainCamera.backgroundColor, RenderSettings.fogColor, groundMaterial, playerMaterial);
         }
     }
 
@@ -98,24 +101,20 @@ public class EnvironmentController : MonoBehaviour
 
     void ChangeBackgroundColor(float intensityFactor)
     {
-        Color desiredTopColor = _gameManager.SkyboxTopColor * intensityFactor;
-        Color desiredBottomColor = _gameManager.SkyboxBottomColor * intensityFactor;
+        Color desiredColor = _gameManager.BackgroundColor * intensityFactor;
         Color desiredFogColor = _gameManager.FogColor * intensityFactor;
-        StartCoroutine(ChangeColor(desiredTopColor, desiredBottomColor, desiredFogColor));
+        StartCoroutine(ChangeColor(desiredColor, desiredFogColor));
     }
 
-    IEnumerator ChangeColor(Color desiredTopColor, Color desiredBottomColor, Color desiredFogColor)
+    IEnumerator ChangeColor(Color desiredColor, Color desiredFogColor)
     {
         float tick = 0f;
-        Color currentTopColor = _gameManager.SkyboxMaterial.GetColor("_SkyGradientTop");
-        Color currentBottomColor = _gameManager.SkyboxMaterial.GetColor("_SkyGradientBottom");
         Color currentFogColor = RenderSettings.fogColor;
 
-        while (_gameManager.SkyboxMaterial.GetColor("_SkyGradientTop") != desiredTopColor && _gameManager.SkyboxMaterial.GetColor("_SkyGradientBottom") != desiredBottomColor)
+        while (mainCamera.backgroundColor != desiredColor)
         {
             tick += Time.unscaledDeltaTime * COLOR_CHANGE_SPEED;
-            _gameManager.SkyboxMaterial.SetColor("_SkyGradientTop", Color.Lerp(currentTopColor, desiredTopColor, tick));
-            _gameManager.SkyboxMaterial.SetColor("_SkyGradientBottom", Color.Lerp(currentBottomColor, desiredBottomColor, tick));
+            mainCamera.backgroundColor = Color.Lerp(mainCamera.backgroundColor, desiredColor, tick);
             RenderSettings.fogColor = Color.Lerp(currentFogColor, desiredFogColor, tick);
             yield return null;
         }

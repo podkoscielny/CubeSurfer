@@ -25,5 +25,5 @@ public class ButtonHoverColor : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     private void SetBaseColor() => _buttonText.color = _baseColor;
 
-    private void SetHoverColor() => _buttonText.color = _gameManager.SkyboxBottomColor;
+    private void SetHoverColor() => _buttonText.color = _gameManager.BackgroundColor;
 }

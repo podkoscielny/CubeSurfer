@@ -7,19 +7,21 @@ public class MainMenu : MonoBehaviour
     [SerializeField] Renderer cubeRenderer;
 
     private GameManager _gameManager;
+    private Camera _mainCamera;
 
     void Start()
     {
         _gameManager = GameManager.Instance;
+        _mainCamera = Camera.main;
 
         SetMenuTheme();
     }
 
     private void SetMenuTheme()
     {
-        if (_gameManager.SkyboxMaterial != null)
+        if (_gameManager.PlayerMaterial != null)
         {
-            RenderSettings.skybox = _gameManager.SkyboxMaterial;
+            _mainCamera.backgroundColor = _gameManager.BackgroundColor;
             cubeRenderer.material = _gameManager.PlayerMaterial;
         }
     }

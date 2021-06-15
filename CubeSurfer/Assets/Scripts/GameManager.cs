@@ -8,12 +8,9 @@ public class GameManager : Singleton<GameManager>
     //Theme properties
     public float CurrentSpeed { get; set; }
     public Color FogColor { get; private set; }
-    public Color LightingGradient { get; private set; }
-    public Material SkyboxMaterial { get; private set; }
+    public Color BackgroundColor { get; private set; }
     public Material PlayerMaterial { get; private set; }
     public Material GroundMaterial { get; private set; }
-    public Color SkyboxTopColor { get; private set; }
-    public Color SkyboxBottomColor { get; private set; }
 
     //Game state
     public bool IsGameOver { get; private set; } = false;
@@ -63,15 +60,12 @@ public class GameManager : Singleton<GameManager>
         if (HasGameStarted && !IsGameOver && _scoreText != null) UpdateScore();
     }
 
-    public void SetTheme(Material skyboxMaterial, Color fogColor, Material groundMaterial, Material playerMaterial) // set colors in options menu
+    public void SetTheme(Color backgroundColor, Color fogColor, Material groundMaterial, Material playerMaterial) // set colors in options menu
     {
-        SkyboxMaterial = skyboxMaterial;
+        BackgroundColor = backgroundColor;
         FogColor = fogColor;
         GroundMaterial = groundMaterial;
         PlayerMaterial = playerMaterial;
-
-        SkyboxTopColor = skyboxMaterial.GetColor("_SkyGradientTop");
-        SkyboxBottomColor = skyboxMaterial.GetColor("_SkyGradientBottom");
     }
 
     public void ResetGame()
@@ -81,9 +75,6 @@ public class GameManager : Singleton<GameManager>
         IsHighscoreSet = false;
         Level = 1;
         _score = 0;
-
-        SkyboxMaterial.SetColor("_SkyGradientTop", SkyboxTopColor);
-        SkyboxMaterial.SetColor("_SkyGradientBottom", SkyboxBottomColor);
     }
 
     public void GetHUDTexts(TextMeshProUGUI scoreHudText, TextMeshProUGUI levelHudText)

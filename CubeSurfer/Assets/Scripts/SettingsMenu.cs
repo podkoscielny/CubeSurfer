@@ -1,16 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 using TMPro;
 
 [System.Serializable]
 public class ThemeColor
 {
     public string name;
-    public Material skyboxMaterial;
     public Color fogColor;
-    public Color lightingGradient;
+    public Color backgroundColor;
     public Material playerMaterial;
     public Material groundMaterial;
 }
@@ -24,12 +22,13 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] List<ThemeColor> themes;
 
     private GameManager _gameManager;
-
     private Resolution[] _resolutions;
+    private Camera _mainCamera;
 
     void Start()
     {
         _gameManager = GameManager.Instance;
+        _mainCamera = Camera.main;
 
         SetQualityOptions();
         SetThemeOptions();
@@ -48,10 +47,10 @@ public class SettingsMenu : MonoBehaviour
     {
         ThemeColor theme = themes[themeIndex];
 
-        RenderSettings.skybox = theme.skyboxMaterial;
+        _mainCamera.backgroundColor = theme.backgroundColor;
         cubeRenderer.material = theme.playerMaterial;
 
-        _gameManager.SetTheme(theme.skyboxMaterial, theme.fogColor, theme.groundMaterial, theme.playerMaterial);
+        _gameManager.SetTheme(theme.backgroundColor, theme.fogColor, theme.groundMaterial, theme.playerMaterial);
     }
 
     private void SetQualityOptions()
@@ -84,7 +83,7 @@ public class SettingsMenu : MonoBehaviour
             string themeName = themes[i].name;
             themeOptions.Add(themeName);
 
-            if (themes[i].skyboxMaterial == _gameManager.SkyboxMaterial)
+            if (themes[i].backgroundColor == _gameManager.BackgroundColor)
                 currentThemeIndex = i;
         }
 
