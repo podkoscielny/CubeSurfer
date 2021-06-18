@@ -335,13 +335,40 @@ MonoBehaviour:
   hueVsHue:
     m_OverrideState: 1
     m_Value:
-      <length>k__BackingField: 3
+      <length>k__BackingField: 6
       m_Loop: 1
       m_ZeroValue: 0.5
       m_Range: 1
       m_Curve:
         serializedVersion: 2
         m_Curve:
+        - serializedVersion: 3
+          time: 0.23182711
+          value: 0.50409836
+          inSlope: -0.047410518
+          outSlope: -0.047410518
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 0.23192711
+          value: 0.43442625
+          inSlope: 0.015795434
+          outSlope: 0.015795434
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 0.36935166
+          value: 0.50409836
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
         - serializedVersion: 3
           time: 0.502947
           value: 0.50409836
@@ -375,13 +402,40 @@ MonoBehaviour:
   hueVsSat:
     m_OverrideState: 1
     m_Value:
-      <length>k__BackingField: 3
+      <length>k__BackingField: 6
       m_Loop: 1
       m_ZeroValue: 0.5
       m_Range: 1
       m_Curve:
         serializedVersion: 2
         m_Curve:
+        - serializedVersion: 3
+          time: 0.24361493
+          value: 0.5
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 0.26719058
+          value: 0.5491803
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 0.38310412
+          value: 0.5
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
         - serializedVersion: 3
           time: 0.5108055
           value: 0.5
