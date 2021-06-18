@@ -15,12 +15,12 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.42745098, g: 0.8156863, b: 0.93333334, a: 1}
-  m_FogMode: 1
-  m_FogDensity: 0.01
-  m_LinearFogStart: 0
-  m_LinearFogEnd: 220
-  m_AmbientSkyColor: {r: 0.8113208, g: 0.7233718, b: 0.62379855, a: 1}
+  m_FogColor: {r: 0.9292453, g: 0.97972274, b: 1, a: 1}
+  m_FogMode: 3
+  m_FogDensity: 0.007
+  m_LinearFogStart: -36.3
+  m_LinearFogEnd: 2000
+  m_AmbientSkyColor: {r: 0.9622642, g: 0.92964023, b: 0.89417946, a: 1}
   m_AmbientEquatorColor: {r: 0, g: 0, b: 0, a: 1}
   m_AmbientGroundColor: {r: 1, g: 1, b: 1, a: 1}
   m_AmbientIntensity: 1
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.11830872, g: 0.6248955, b: 0.99999905, a: 1}
+  m_IndirectSpecularColor: {r: 0.118061766, g: 0.62293464, b: 0.99999905, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7044,13 +7044,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.5012063, y: -0, z: -0, w: 0.8653279}
+  m_LocalRotation: {x: 0.7771459, y: 0, z: 0, w: 0.62932044}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 60.160004, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 102, y: 0, z: 0}
 --- !u!1 &737594547
 GameObject:
   m_ObjectHideFlags: 0
@@ -7391,7 +7391,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &833715001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7582,7 +7582,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a0726b24b7ebe1741923d9797370a623,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 888
+      value: -285
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a0726b24b7ebe1741923d9797370a623,
         type: 3}
@@ -8110,7 +8110,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &963194226
 AudioListener:
   m_ObjectHideFlags: 0
