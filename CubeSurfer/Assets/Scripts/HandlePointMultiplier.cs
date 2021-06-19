@@ -16,17 +16,9 @@ public class HandlePointMultiplier : MonoBehaviour
 
     private const float multiplierDuration = 10f;
 
-    private void Start()
-    {
-        _playerAudio = GetComponent<AudioSource>();
-    }
+    void Start() => _playerAudio = GetComponent<AudioSource>();
 
-    IEnumerator DisableMultiplier()
-    {
-        yield return new WaitForSeconds(multiplierDuration);
-
-        OnDisableMultiplier.Invoke();
-    }
+    private void DisableMultiplier() => OnDisableMultiplier.Invoke();
 
     private void OnTriggerEnter(Collider other)
     {
@@ -34,8 +26,8 @@ public class HandlePointMultiplier : MonoBehaviour
         {
             OnEnableMultiplier.Invoke();
             _playerAudio.PlayOneShot(pickedMultiplierSound, SOUND_VOLUME);
-            StartCoroutine(DisableMultiplier());
             other.gameObject.SetActive(false);
+            Invoke(nameof(DisableMultiplier), multiplierDuration);
         }
     }
 }
