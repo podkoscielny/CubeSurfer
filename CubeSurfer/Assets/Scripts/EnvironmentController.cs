@@ -14,6 +14,7 @@ public class EnvironmentController : MonoBehaviour
     [SerializeField] GameObject ground;
     [SerializeField] Camera mainCamera;
     [SerializeField] Camera startCamera;
+    [SerializeField] GameObject boxVolume;
 
     [Header("Audio")]
     [SerializeField] AudioClip switchOnAudio;
@@ -91,6 +92,7 @@ public class EnvironmentController : MonoBehaviour
 
     void SetGameOverProperties()
     {
+        boxVolume.SetActive(true);
         lamps.SetActive(false);
         gameOverLamp.SetActive(true);
         gameOverLamp.transform.LookAt(player.transform);
