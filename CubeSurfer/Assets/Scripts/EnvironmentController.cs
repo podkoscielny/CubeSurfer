@@ -71,7 +71,6 @@ public class EnvironmentController : MonoBehaviour
     void SetGlobalProperties(WaveController waveController, float obstacleSpeed)
     {
         // Set global properties based on Wave's unique properties
-        StartCoroutine(ChangeLightIntensity(waveController.lightIntensity));
         _gameManager.CurrentSpeed = obstacleSpeed;
 
         if (!waveController.areLightsTurnedOn && lamps.activeInHierarchy)
@@ -87,7 +86,12 @@ public class EnvironmentController : MonoBehaviour
 
         lamps.SetActive(waveController.areLightsTurnedOn);
 
-        ChangeBackgroundColor(waveController.backgroundColorIntensity);
+        Color desiredBackgroundColor = _gameManager.BackgroundColor * waveController.backgroundColorIntensity;
+        Color desiredFogColor = _gameManager.FogColor * waveController.backgroundColorIntensity;
+
+        StartCoroutine(ChangeColor(desiredBackgroundColor));
+        StartCoroutine(ChangeFogIntensity(desiredFogColor));
+        StartCoroutine(ChangeLightIntensity(waveController.lightIntensity));
     }
 
     void SetGameOverProperties()
@@ -104,20 +108,29 @@ public class EnvironmentController : MonoBehaviour
     void ChangeBackgroundColor(float intensityFactor)
     {
         Color desiredColor = _gameManager.BackgroundColor * intensityFactor;
-        Color desiredFogColor = _gameManager.FogColor * intensityFactor;
-        StartCoroutine(ChangeColor(desiredColor, desiredFogColor));
+        StartCoroutine(ChangeColor(desiredColor));
     }
 
-    IEnumerator ChangeColor(Color desiredColor, Color desiredFogColor)
+    IEnumerator ChangeColor(Color desiredColor)
     {
         float tick = 0f;
-        Color currentFogColor = RenderSettings.fogColor;
 
         while (mainCamera.backgroundColor != desiredColor)
         {
             tick += Time.unscaledDeltaTime * COLOR_CHANGE_SPEED;
             mainCamera.backgroundColor = Color.Lerp(mainCamera.backgroundColor, desiredColor, tick);
-            RenderSettings.fogColor = Color.Lerp(currentFogColor, desiredFogColor, tick);
+            yield return null;
+        }
+    }
+
+    IEnumerator ChangeFogIntensity(Color desiredColor)
+    {
+        float tick = 0f;
+
+        while (RenderSettings.fogColor != desiredColor)
+        {
+            tick += Time.unscaledDeltaTime * COLOR_CHANGE_SPEED;
+            RenderSettings.fogColor = Color.Lerp(RenderSettings.fogColor, desiredColor, tick);
             yield return null;
         }
     }
