@@ -102,13 +102,10 @@ public class EnvironmentController : MonoBehaviour
         gameOverLamp.transform.LookAt(player.transform);
 
         if(directionalLight.intensity > GAMEOVER_BACKGROUND_INTENSITY)
-            ChangeBackgroundColor(GAMEOVER_BACKGROUND_INTENSITY);
-    }
-
-    void ChangeBackgroundColor(float intensityFactor)
-    {
-        Color desiredColor = _gameManager.BackgroundColor * intensityFactor;
-        StartCoroutine(ChangeColor(desiredColor));
+        {
+            Color desiredColor = _gameManager.BackgroundColor * GAMEOVER_BACKGROUND_INTENSITY;
+            StartCoroutine(ChangeColor(desiredColor));
+        }
     }
 
     IEnumerator ChangeColor(Color desiredColor)
