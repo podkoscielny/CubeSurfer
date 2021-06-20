@@ -15,6 +15,7 @@ public class EnvironmentController : MonoBehaviour
     [SerializeField] Camera mainCamera;
     [SerializeField] Camera startCamera;
     [SerializeField] GameObject boxVolume;
+    [SerializeField] GameObject dummySun;
 
     [Header("Audio")]
     [SerializeField] AudioClip switchOnAudio;
@@ -26,6 +27,7 @@ public class EnvironmentController : MonoBehaviour
     private const float COLOR_CHANGE_SPEED = 0.35f;
     private const float LIGHT_CHANGE_SPEED = 0.18f;
     private const float GAMEOVER_BACKGROUND_INTENSITY = 0.4f;
+    private const float INTENSITY_ADDITION = 0.500352f;
 
     #region Event Subscribers
     private void OnEnable()
@@ -47,6 +49,19 @@ public class EnvironmentController : MonoBehaviour
         _environmentAudio = GetComponent<AudioSource>();
 
         SetThemeColors();
+    }
+
+    void Update()
+    {
+        if (_gameManager.HasGameStarted) SetBackgroundColors();
+    }
+
+    void SetBackgroundColors()
+    {
+        float intensity = dummySun.transform.position.y + INTENSITY_ADDITION;
+
+        mainCamera.backgroundColor = _gameManager.BackgroundColor * intensity;
+        RenderSettings.fogColor = _gameManager.FogColor * intensity;
     }
 
     void SetThemeColors()
@@ -86,12 +101,12 @@ public class EnvironmentController : MonoBehaviour
 
         lamps.SetActive(waveController.areLightsTurnedOn);
 
-        Color desiredBackgroundColor = _gameManager.BackgroundColor * waveController.backgroundColorIntensity;
-        Color desiredFogColor = _gameManager.FogColor * waveController.backgroundColorIntensity;
+        //Color desiredBackgroundColor = _gameManager.BackgroundColor * waveController.backgroundColorIntensity;
+        //Color desiredFogColor = _gameManager.FogColor * waveController.backgroundColorIntensity;
 
-        StartCoroutine(ChangeColor(desiredBackgroundColor));
-        StartCoroutine(ChangeFogIntensity(desiredFogColor));
-        StartCoroutine(ChangeLightIntensity(waveController.lightIntensity));
+        //StartCoroutine(ChangeColor(desiredBackgroundColor));
+        //StartCoroutine(ChangeFogIntensity(desiredFogColor));
+        //StartCoroutine(ChangeLightIntensity(waveController.lightIntensity));
     }
 
     void SetGameOverProperties()
