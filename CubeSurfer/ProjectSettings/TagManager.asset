@@ -11,6 +11,7 @@ TagManager:
   - PointMultiplier
   - NewHighscore
   - LevelLoader
+  - Clouds
   layers:
   - Default
   - TransparentFX

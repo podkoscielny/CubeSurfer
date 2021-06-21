@@ -21,8 +21,10 @@ public class EnvironmentController : MonoBehaviour
     [SerializeField] AudioClip switchOnAudio;
     [SerializeField] AudioClip switchOffAudio;
 
-    private AudioSource _environmentAudio;
     private Color _ambientLight;
+    private Material _cloudsMaterial;
+    private AudioSource _environmentAudio;
+    private const float BASE_CLOUDS_INTENSITY = 1.46f;
     private const float SWITCH_ON_PITCH = 1.4f;
     private const float SWITCH_OFF_PITCH = 0.8f;
     private const float COLOR_CHANGE_SPEED = 0.35f;
@@ -47,8 +49,9 @@ public class EnvironmentController : MonoBehaviour
     void Start()
     {
         _gameManager = GameManager.Instance;
-        _environmentAudio = GetComponent<AudioSource>();
         _ambientLight = RenderSettings.ambientLight;
+        _cloudsMaterial = GameObject.FindGameObjectWithTag("Clouds").GetComponent<Renderer>().material;
+        _environmentAudio = GetComponent<AudioSource>();
 
         SetThemeColors();
     }
@@ -65,6 +68,7 @@ public class EnvironmentController : MonoBehaviour
         mainCamera.backgroundColor = _gameManager.BackgroundColor * intensity;
         RenderSettings.fogColor = _gameManager.FogColor * intensity;
         RenderSettings.ambientLight = _ambientLight * intensity;
+        _cloudsMaterial.SetFloat("Vector1_245C3B23", BASE_CLOUDS_INTENSITY * intensity);
     }
 
     void SetThemeColors()

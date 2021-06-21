@@ -7712,6 +7712,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sky_Disk_100k
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a0726b24b7ebe1741923d9797370a623,
+        type: 3}
+      propertyPath: m_TagString
+      value: Clouds
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0726b24b7ebe1741923d9797370a623, type: 3}
 --- !u!4 &865419443 stripped
