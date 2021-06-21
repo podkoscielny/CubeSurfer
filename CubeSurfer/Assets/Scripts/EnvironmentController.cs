@@ -22,6 +22,7 @@ public class EnvironmentController : MonoBehaviour
     [SerializeField] AudioClip switchOffAudio;
 
     private AudioSource _environmentAudio;
+    private Color _ambientLight;
     private const float SWITCH_ON_PITCH = 1.4f;
     private const float SWITCH_OFF_PITCH = 0.8f;
     private const float COLOR_CHANGE_SPEED = 0.35f;
@@ -47,6 +48,7 @@ public class EnvironmentController : MonoBehaviour
     {
         _gameManager = GameManager.Instance;
         _environmentAudio = GetComponent<AudioSource>();
+        _ambientLight = RenderSettings.ambientLight;
 
         SetThemeColors();
     }
@@ -62,6 +64,7 @@ public class EnvironmentController : MonoBehaviour
 
         mainCamera.backgroundColor = _gameManager.BackgroundColor * intensity;
         RenderSettings.fogColor = _gameManager.FogColor * intensity;
+        RenderSettings.ambientLight = _ambientLight * intensity;
     }
 
     void SetThemeColors()
