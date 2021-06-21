@@ -7,7 +7,6 @@ public class EnvironmentController : MonoBehaviour
     private GameManager _gameManager;
 
     [Header("Environment Change")]
-    [SerializeField] GameObject lamps;
     [SerializeField] GameObject gameOverLamp;
     [SerializeField] Light directionalLight;
     [SerializeField] GameObject player;
@@ -27,22 +26,17 @@ public class EnvironmentController : MonoBehaviour
     private const float BASE_CLOUDS_INTENSITY = 1.46f;
     private const float SWITCH_ON_PITCH = 1.4f;
     private const float SWITCH_OFF_PITCH = 0.8f;
-    private const float COLOR_CHANGE_SPEED = 0.35f;
-    private const float LIGHT_CHANGE_SPEED = 0.18f;
-    private const float GAMEOVER_BACKGROUND_INTENSITY = 0.4f;
     private const float INTENSITY_ADDITION = 0.500352f;
 
     #region Event Subscribers
     private void OnEnable()
     {
         PlayerController.OnGameOver += SetGameOverProperties;
-        SpawnManager.OnEnvironmentChange += SetGlobalProperties;
     }
 
     private void OnDisable()
     {
         PlayerController.OnGameOver -= SetGameOverProperties;
-        SpawnManager.OnEnvironmentChange -= SetGlobalProperties;
     }
     #endregion
 
@@ -90,72 +84,10 @@ public class EnvironmentController : MonoBehaviour
         }
     }
 
-    void SetGlobalProperties(WaveController waveController, float obstacleSpeed)
-    {
-        // Set global properties based on Wave's unique properties
-        _gameManager.CurrentSpeed = obstacleSpeed;
-
-        if (!waveController.areLightsTurnedOn && lamps.activeInHierarchy)
-        {
-            _environmentAudio.pitch = SWITCH_OFF_PITCH;
-            _environmentAudio.PlayOneShot(switchOffAudio);
-        }
-        else if (waveController.areLightsTurnedOn && !lamps.activeInHierarchy)
-        {
-            _environmentAudio.pitch = SWITCH_ON_PITCH;
-            _environmentAudio.PlayOneShot(switchOnAudio);
-        }
-
-        lamps.SetActive(waveController.areLightsTurnedOn);
-
-        //Color desiredBackgroundColor = _gameManager.BackgroundColor * waveController.backgroundColorIntensity;
-        //Color desiredFogColor = _gameManager.FogColor * waveController.backgroundColorIntensity;
-
-        //StartCoroutine(ChangeColor(desiredBackgroundColor));
-        //StartCoroutine(ChangeFogIntensity(desiredFogColor));
-        //StartCoroutine(ChangeLightIntensity(waveController.lightIntensity));
-    }
-
     void SetGameOverProperties()
     {
         boxVolume.SetActive(true);
         gameOverLamp.SetActive(true);
         gameOverLamp.transform.LookAt(player.transform);
-    }
-
-    IEnumerator ChangeColor(Color desiredColor)
-    {
-        float tick = 0f;
-
-        while (mainCamera.backgroundColor != desiredColor)
-        {
-            tick += Time.unscaledDeltaTime * COLOR_CHANGE_SPEED;
-            mainCamera.backgroundColor = Color.Lerp(mainCamera.backgroundColor, desiredColor, tick);
-            yield return null;
-        }
-    }
-
-    IEnumerator ChangeFogIntensity(Color desiredColor)
-    {
-        float tick = 0f;
-
-        while (RenderSettings.fogColor != desiredColor)
-        {
-            tick += Time.unscaledDeltaTime * COLOR_CHANGE_SPEED;
-            RenderSettings.fogColor = Color.Lerp(RenderSettings.fogColor, desiredColor, tick);
-            yield return null;
-        }
-    }
-
-    IEnumerator ChangeLightIntensity(float desiredIntensity)
-    {
-        float tick = 0f;
-
-        while (directionalLight.intensity != desiredIntensity)
-        {
-            tick += Time.unscaledDeltaTime * LIGHT_CHANGE_SPEED;
-            directionalLight.intensity = Mathf.Lerp(directionalLight.intensity, desiredIntensity, tick);
-            yield return null;
-        }
     }
 }

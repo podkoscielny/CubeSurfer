@@ -5,20 +5,19 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public static event Action<WaveController, float> OnEnvironmentChange;
-
     [SerializeField] GameObject pointMultiplier;
     [SerializeField] GameObject[] wavePrefabs;
 
+    private GameManager _gameManager;
     private ObjectPooler _objectPooler;
     private MoveTowardPlayer _multiplierScript;
-
     private int _currentWaveIndex = 0;
     private float _speedMultiplier = 1f;
     private const float INCREASE_MULTIPLIER_BY = 0.5f;
 
     private void Start()
     {
+        _gameManager = GameManager.Instance;
         _objectPooler = ObjectPooler.Instance;
 
         _multiplierScript = pointMultiplier.GetComponent<MoveTowardPlayer>();
@@ -46,7 +45,7 @@ public class SpawnManager : MonoBehaviour
         WaveController waveController = waveToSpawn.GetComponent<WaveController>();
         float obstacleSpeed = waveController.speed * _speedMultiplier;
 
-        OnEnvironmentChange?.Invoke(waveController, obstacleSpeed);
+        _gameManager.CurrentSpeed = obstacleSpeed;
 
         InstantiateObstacles(waveToSpawn, obstacleSpeed);
         if (waveController.hasMultiplier)
