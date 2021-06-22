@@ -1247,7 +1247,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 0.96862745, b: 0.72156864, a: 1}
   m_Intensity: 0
-  m_Range: 59.6
+  m_Range: 68
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -1285,7 +1285,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -7131,7 +7131,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 0.96862745, b: 0.72156864, a: 1}
   m_Intensity: 0
-  m_Range: 59.6
+  m_Range: 68
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -7169,7 +7169,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -7652,7 +7652,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 0.96862745, b: 0.72156864, a: 1}
   m_Intensity: 0
-  m_Range: 59.6
+  m_Range: 68
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -7690,7 +7690,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -8307,6 +8307,16 @@ MonoBehaviour:
   startCamera: {fileID: 193847268}
   boxVolume: {fileID: 433918861}
   dummySun: {fileID: 997320982}
+  lightBulbsMaterial: {fileID: 2100000, guid: 8811451e67a70c84cace4b386b2995b2, type: 2}
+  lights:
+  - {fileID: 1933874649}
+  - {fileID: 623191574}
+  - {fileID: 1478218023}
+  - {fileID: 850388135}
+  - {fileID: 190799212}
+  - {fileID: 1017464162}
+  - {fileID: 397218157}
+  - {fileID: 1252950937}
   switchOnAudio: {fileID: 8300000, guid: 3fc20dec8f9fb93429a27bd9742720bb, type: 3}
   switchOffAudio: {fileID: 8300000, guid: b9e7df429e884ce4683dc48861c0c83b, type: 3}
 --- !u!82 &809568271
@@ -8668,7 +8678,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 0.96862745, b: 0.72156864, a: 1}
   m_Intensity: 0
-  m_Range: 59.6
+  m_Range: 68
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -8706,7 +8716,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -9691,7 +9701,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 0.96862745, b: 0.72156864, a: 1}
   m_Intensity: 0
-  m_Range: 59.6
+  m_Range: 68
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -9729,7 +9739,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -10907,7 +10917,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 0.96862745, b: 0.72156864, a: 1}
   m_Intensity: 0
-  m_Range: 59.6
+  m_Range: 68
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -10945,7 +10955,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -12262,7 +12272,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 0.96862745, b: 0.72156864, a: 1}
   m_Intensity: 0
-  m_Range: 59.6
+  m_Range: 68
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -12300,7 +12310,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -13337,7 +13347,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 0.96862745, b: 0.72156864, a: 1}
   m_Intensity: 0
-  m_Range: 59.6
+  m_Range: 68
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -13375,7 +13385,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -13639,7 +13649,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2001235666}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 3.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1933874648}

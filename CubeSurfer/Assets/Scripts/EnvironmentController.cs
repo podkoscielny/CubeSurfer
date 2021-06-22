@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EnvironmentController : MonoBehaviour
 {
-    private GameManager _gameManager;
-
     [Header("Environment Change")]
     [SerializeField] GameObject gameOverLamp;
     [SerializeField] Light directionalLight;
@@ -15,6 +13,8 @@ public class EnvironmentController : MonoBehaviour
     [SerializeField] Camera startCamera;
     [SerializeField] GameObject boxVolume;
     [SerializeField] GameObject dummySun;
+    [SerializeField] Material lightBulbsMaterial;
+    [SerializeField] Light[] lights;
 
     [Header("Audio")]
     [SerializeField] AudioClip switchOnAudio;
@@ -22,7 +22,11 @@ public class EnvironmentController : MonoBehaviour
 
     private Color _ambientLight;
     private Material _cloudsMaterial;
+    private GameManager _gameManager;
     private AudioSource _environmentAudio;
+    private bool _areLightsTurnedOn = false;
+    private const float TURN_LIGHTS_AT_INTENSITY = 0.55f;
+    private const float LIGHTS_INTENSITY = 280f;
     private const float BASE_CLOUDS_INTENSITY = 1.46f;
     private const float SWITCH_ON_PITCH = 1.4f;
     private const float SWITCH_OFF_PITCH = 0.8f;
@@ -63,6 +67,31 @@ public class EnvironmentController : MonoBehaviour
         RenderSettings.fogColor = _gameManager.FogColor * intensity;
         RenderSettings.ambientLight = _ambientLight * intensity;
         _cloudsMaterial.SetFloat("Vector1_245C3B23", BASE_CLOUDS_INTENSITY * intensity);
+
+        if(intensity < TURN_LIGHTS_AT_INTENSITY && !_areLightsTurnedOn)
+        {
+            //turn the lights on
+            lightBulbsMaterial.EnableKeyword("_EMISSION");
+
+            for (int i = 0; i < lights.Length; i++)
+            {
+                lights[i].intensity = LIGHTS_INTENSITY;
+            }
+
+            _areLightsTurnedOn = true;
+        }
+        else if(intensity > TURN_LIGHTS_AT_INTENSITY && _areLightsTurnedOn)
+        {
+            //turn the lights off
+            lightBulbsMaterial.DisableKeyword("_EMISSION");
+
+            for (int i = 0; i < lights.Length; i++)
+            {
+                lights[i].intensity = 0;
+            }
+
+            _areLightsTurnedOn = false;
+        }
     }
 
     void SetThemeColors()
