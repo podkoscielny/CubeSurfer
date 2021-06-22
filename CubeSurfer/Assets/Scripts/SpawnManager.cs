@@ -10,7 +10,6 @@ public class SpawnManager : MonoBehaviour
 
     private GameManager _gameManager;
     private ObjectPooler _objectPooler;
-    private MoveTowardPlayer _multiplierScript;
     private int _currentWaveIndex = 0;
     private float _speedMultiplier = 1f;
     private const float INCREASE_MULTIPLIER_BY = 0.5f;
@@ -19,8 +18,6 @@ public class SpawnManager : MonoBehaviour
     {
         _gameManager = GameManager.Instance;
         _objectPooler = ObjectPooler.Instance;
-
-        _multiplierScript = pointMultiplier.GetComponent<MoveTowardPlayer>();
     }
 
     #region Event Subscribers
@@ -43,13 +40,12 @@ public class SpawnManager : MonoBehaviour
     {
         GameObject waveToSpawn = wavePrefabs[_currentWaveIndex];
         WaveController waveController = waveToSpawn.GetComponent<WaveController>();
-        float obstacleSpeed = waveController.speed * _speedMultiplier;
 
-        _gameManager.CurrentSpeed = obstacleSpeed;
+        _gameManager.CurrentSpeed = waveController.speed * _speedMultiplier;
 
-        InstantiateObstacles(waveToSpawn, obstacleSpeed);
+        InstantiateObstacles(waveToSpawn);
         if (waveController.hasMultiplier)
-            SpawnMultiplier(waveController.multipliersPositon, obstacleSpeed);
+            SpawnMultiplier(waveController.multipliersPositon);
 
         _currentWaveIndex++;
 
@@ -60,24 +56,20 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    private void InstantiateObstacles(GameObject waveToSpawn, float obstacleSpeed)
+    private void InstantiateObstacles(GameObject waveToSpawn)
     {
         // Get obstacles from pool and initialize their transform so they match transform from wavePrefab
         foreach (Transform child in waveToSpawn.transform)
         {
             GameObject obstacle = _objectPooler.GetFromPool();
-            MoveTowardPlayer obstacleScript = obstacle.GetComponent<MoveTowardPlayer>();
-
-            obstacleScript.speed = obstacleSpeed; // Set obstacle speed to speed declared in wavePrefab
             obstacle.transform.SetTransformation(child);
         }
     }
 
-    private void SpawnMultiplier(Vector3 position, float speed)
+    private void SpawnMultiplier(Vector3 position)
     {
         pointMultiplier.SetActive(true);
 
-        _multiplierScript.speed = speed;
         pointMultiplier.transform.position = position;
     }
 }

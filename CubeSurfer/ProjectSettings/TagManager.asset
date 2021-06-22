@@ -12,6 +12,7 @@ TagManager:
   - NewHighscore
   - LevelLoader
   - Clouds
+  - Lamp
   layers:
   - Default
   - TransparentFX

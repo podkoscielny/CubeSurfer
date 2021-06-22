@@ -9,10 +9,7 @@ public class MoveObstacleToPool : MonoBehaviour
 
     private ObjectPooler _objectPooler;
 
-    void Start()
-    {
-        _objectPooler = ObjectPooler.Instance;
-    }
+    void Start() => _objectPooler = ObjectPooler.Instance;
 
     void OnTriggerEnter(Collider other)
     {
