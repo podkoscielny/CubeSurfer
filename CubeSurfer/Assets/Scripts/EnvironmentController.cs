@@ -26,7 +26,7 @@ public class EnvironmentController : MonoBehaviour
     private AudioSource _environmentAudio;
     private bool _areLightsTurnedOn = false;
     private const float TURN_LIGHTS_AT_INTENSITY = 0.55f;
-    private const float LIGHTS_INTENSITY = 280f;
+    private const float LIGHTS_INTENSITY = 1500f;
     private const float BASE_CLOUDS_INTENSITY = 1.46f;
     private const float SWITCH_ON_PITCH = 1.4f;
     private const float SWITCH_OFF_PITCH = 0.8f;

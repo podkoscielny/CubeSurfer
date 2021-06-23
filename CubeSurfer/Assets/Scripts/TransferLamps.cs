@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TransferLamps : MonoBehaviour
 {
-    private const float LAMP_POSITION_Z = 506.75f;
+    private const float LAMP_POSITION_Z = 513.25f;
 
     private void OnTriggerEnter(Collider other)
     {
