@@ -6,7 +6,6 @@ public class EnvironmentController : MonoBehaviour
 {
     [Header("Environment Change")]
     [SerializeField] GameObject gameOverLamp;
-    [SerializeField] Light directionalLight;
     [SerializeField] GameObject player;
     [SerializeField] GameObject ground;
     [SerializeField] Camera mainCamera;
@@ -14,6 +13,7 @@ public class EnvironmentController : MonoBehaviour
     [SerializeField] GameObject boxVolume;
     [SerializeField] GameObject dummySun;
     [SerializeField] Material lightBulbsMaterial;
+    [SerializeField] Animator lampsParentAnimator;
     [SerializeField] Light[] lights;
 
     [Header("Audio")]
@@ -41,6 +41,7 @@ public class EnvironmentController : MonoBehaviour
     private void OnDisable()
     {
         PlayerController.OnGameOver -= SetGameOverProperties;
+        lightBulbsMaterial.DisableKeyword("_EMISSION");
     }
     #endregion
 
@@ -72,6 +73,7 @@ public class EnvironmentController : MonoBehaviour
         {
             //turn the lights on
             lightBulbsMaterial.EnableKeyword("_EMISSION");
+            lampsParentAnimator.SetTrigger("Activate");
 
             for (int i = 0; i < lights.Length; i++)
             {
@@ -84,6 +86,7 @@ public class EnvironmentController : MonoBehaviour
         {
             //turn the lights off
             lightBulbsMaterial.DisableKeyword("_EMISSION");
+            lampsParentAnimator.SetTrigger("Deactivate");
 
             for (int i = 0; i < lights.Length; i++)
             {
