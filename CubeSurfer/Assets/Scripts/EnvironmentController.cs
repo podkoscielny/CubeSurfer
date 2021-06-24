@@ -15,6 +15,7 @@ public class EnvironmentController : MonoBehaviour
     [SerializeField] Material lightBulbsMaterial;
     [SerializeField] Animator lampsParentAnimator;
     [SerializeField] Light[] lights;
+    [SerializeField] GameObject[] ledStrips;
 
     [Header("Audio")]
     [SerializeField] AudioClip switchOnAudio;
@@ -75,6 +76,11 @@ public class EnvironmentController : MonoBehaviour
             lightBulbsMaterial.EnableKeyword("_EMISSION");
             lampsParentAnimator.SetTrigger("Activate");
 
+            foreach (GameObject led in ledStrips)
+            {
+                led.SetActive(true);
+            }
+
             for (int i = 0; i < lights.Length; i++)
             {
                 lights[i].intensity = LIGHTS_INTENSITY;
@@ -87,6 +93,11 @@ public class EnvironmentController : MonoBehaviour
             //turn the lights off
             lightBulbsMaterial.DisableKeyword("_EMISSION");
             lampsParentAnimator.SetTrigger("Deactivate");
+
+            foreach (GameObject led in ledStrips)
+            {
+                led.SetActive(false);
+            }
 
             for (int i = 0; i < lights.Length; i++)
             {
