@@ -13,7 +13,6 @@ public class EnvironmentController : MonoBehaviour
     [SerializeField] GameObject boxVolume;
     [SerializeField] GameObject dummySun;
     [SerializeField] Material lightBulbsMaterial;
-    [SerializeField] Animator lampsParentAnimator;
     [SerializeField] Light[] lights;
     [SerializeField] GameObject[] ledStrips;
 
@@ -24,6 +23,7 @@ public class EnvironmentController : MonoBehaviour
     private Color _ambientLight;
     private Material _cloudsMaterial;
     private GameManager _gameManager;
+    private Animator _environmentAnimator;
     private AudioSource _environmentAudio;
     private bool _areLightsTurnedOn = false;
     private const float TURN_LIGHTS_AT_INTENSITY = 0.55f;
@@ -51,6 +51,7 @@ public class EnvironmentController : MonoBehaviour
         _gameManager = GameManager.Instance;
         _ambientLight = RenderSettings.ambientLight;
         _cloudsMaterial = GameObject.FindGameObjectWithTag("Clouds").GetComponent<Renderer>().material;
+        _environmentAnimator = GetComponent<Animator>();
         _environmentAudio = GetComponent<AudioSource>();
 
         SetThemeColors();
@@ -70,40 +71,16 @@ public class EnvironmentController : MonoBehaviour
         RenderSettings.ambientLight = _ambientLight * intensity;
         _cloudsMaterial.SetFloat("Vector1_245C3B23", BASE_CLOUDS_INTENSITY * intensity);
 
-        if(intensity < TURN_LIGHTS_AT_INTENSITY && !_areLightsTurnedOn)
+        if (intensity < TURN_LIGHTS_AT_INTENSITY && !_areLightsTurnedOn)
         {
             //turn the lights on
-            lightBulbsMaterial.EnableKeyword("_EMISSION");
-            lampsParentAnimator.SetTrigger("Activate");
-
-            foreach (GameObject led in ledStrips)
-            {
-                led.SetActive(true);
-            }
-
-            for (int i = 0; i < lights.Length; i++)
-            {
-                lights[i].intensity = LIGHTS_INTENSITY;
-            }
-
+            _environmentAnimator.SetTrigger("Activate");
             _areLightsTurnedOn = true;
         }
-        else if(intensity > TURN_LIGHTS_AT_INTENSITY && _areLightsTurnedOn)
+        else if (intensity > TURN_LIGHTS_AT_INTENSITY && _areLightsTurnedOn)
         {
             //turn the lights off
-            lightBulbsMaterial.DisableKeyword("_EMISSION");
-            lampsParentAnimator.SetTrigger("Deactivate");
-
-            foreach (GameObject led in ledStrips)
-            {
-                led.SetActive(false);
-            }
-
-            for (int i = 0; i < lights.Length; i++)
-            {
-                lights[i].intensity = 0;
-            }
-
+            _environmentAnimator.SetTrigger("Deactivate");
             _areLightsTurnedOn = false;
         }
     }
@@ -132,5 +109,35 @@ public class EnvironmentController : MonoBehaviour
         boxVolume.SetActive(true);
         gameOverLamp.SetActive(true);
         gameOverLamp.transform.LookAt(player.transform);
+    }
+
+    void TurnLightsOn()
+    {
+        lightBulbsMaterial.EnableKeyword("_EMISSION");
+
+        foreach (GameObject led in ledStrips)
+        {
+            led.SetActive(true);
+        }
+
+        for (int i = 0; i < lights.Length; i++)
+        {
+            lights[i].intensity = LIGHTS_INTENSITY;
+        }
+    }
+
+    void TurnLightsOff()
+    {
+        lightBulbsMaterial.DisableKeyword("_EMISSION");
+
+        foreach (GameObject led in ledStrips)
+        {
+            led.SetActive(false);
+        }
+
+        for (int i = 0; i < lights.Length; i++)
+        {
+            lights[i].intensity = 0;
+        }
     }
 }

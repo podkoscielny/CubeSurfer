@@ -7831,6 +7831,7 @@ GameObject:
   - component: {fileID: 809568269}
   - component: {fileID: 809568270}
   - component: {fileID: 809568271}
+  - component: {fileID: 809568272}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -7876,7 +7877,6 @@ MonoBehaviour:
   boxVolume: {fileID: 433918861}
   dummySun: {fileID: 997320982}
   lightBulbsMaterial: {fileID: 2100000, guid: 8811451e67a70c84cace4b386b2995b2, type: 2}
-  lampsParentAnimator: {fileID: 1703266570}
   lights:
   - {fileID: 449064835}
   - {fileID: 1474532546}
@@ -7982,6 +7982,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &809568272
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809568268}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7803b97f926e4b54ab3f15073c25540f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &832297546
 GameObject:
   m_ObjectHideFlags: 0
@@ -12704,7 +12723,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1703266568}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 23ae1a2e129449c438f941d059876eb5, type: 2}
   m_CullingMode: 0
