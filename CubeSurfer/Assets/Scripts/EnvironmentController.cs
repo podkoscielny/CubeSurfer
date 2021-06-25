@@ -13,8 +13,8 @@ public class EnvironmentController : MonoBehaviour
     [SerializeField] GameObject boxVolume;
     [SerializeField] GameObject dummySun;
     [SerializeField] Material lightBulbsMaterial;
+    [SerializeField] Material ledStripsMaterial;
     [SerializeField] Light[] lights;
-    [SerializeField] GameObject[] ledStrips;
 
     [Header("Audio")]
     [SerializeField] AudioClip switchOnAudio;
@@ -43,6 +43,7 @@ public class EnvironmentController : MonoBehaviour
     {
         PlayerController.OnGameOver -= SetGameOverProperties;
         lightBulbsMaterial.DisableKeyword("_EMISSION");
+        ledStripsMaterial.DisableKeyword("_EMISSION");
     }
     #endregion
 
@@ -114,11 +115,7 @@ public class EnvironmentController : MonoBehaviour
     void TurnLightsOn()
     {
         lightBulbsMaterial.EnableKeyword("_EMISSION");
-
-        foreach (GameObject led in ledStrips)
-        {
-            led.SetActive(true);
-        }
+        ledStripsMaterial.EnableKeyword("_EMISSION");
 
         for (int i = 0; i < lights.Length; i++)
         {
@@ -129,11 +126,7 @@ public class EnvironmentController : MonoBehaviour
     void TurnLightsOff()
     {
         lightBulbsMaterial.DisableKeyword("_EMISSION");
-
-        foreach (GameObject led in ledStrips)
-        {
-            led.SetActive(false);
-        }
+        ledStripsMaterial.DisableKeyword("_EMISSION");
 
         for (int i = 0; i < lights.Length; i++)
         {
