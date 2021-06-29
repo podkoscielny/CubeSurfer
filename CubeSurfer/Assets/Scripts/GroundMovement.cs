@@ -12,11 +12,13 @@ public class GroundMovement : MonoBehaviour
     {
         StartGameCamera.OnGameStart += StartGroundMovement;
         MoveObstacleToPool.OnLevelup += SpeedUpGroundMovement;
+        PlayerController.OnGameOver += StopGroundMovement;
     }
     void OnDisable()
     {
         StartGameCamera.OnGameStart -= StartGroundMovement;
         MoveObstacleToPool.OnLevelup -= SpeedUpGroundMovement;
+        PlayerController.OnGameOver -= StopGroundMovement;
     }
     #endregion
 
@@ -27,6 +29,8 @@ public class GroundMovement : MonoBehaviour
     }
 
     void StartGroundMovement() => _groundParticles.Play();
+
+    void StopGroundMovement() => _groundParticles.Pause();
 
     void SpeedUpGroundMovement()
     {
