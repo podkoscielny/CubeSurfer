@@ -7888,6 +7888,7 @@ MonoBehaviour:
   dummySun: {fileID: 997320982}
   lightBulbsMaterial: {fileID: 2100000, guid: 8811451e67a70c84cace4b386b2995b2, type: 2}
   ledStripsMaterial: {fileID: 2100000, guid: 9a05acf8cb433e24f8955c673cf32dae, type: 2}
+  groundMoveParticles: {fileID: 1895412871}
   lights:
   - {fileID: 449064835}
   - {fileID: 1474532546}
@@ -11710,6 +11711,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground Move
       objectReference: {fileID: 0}
+    - target: {fileID: 5127865226836196194, guid: ecd63db0d89417c4092521edb41f8076,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7319125790376839948, guid: ecd63db0d89417c4092521edb41f8076,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7319125790376839948, guid: ecd63db0d89417c4092521edb41f8076,
         type: 3}
       propertyPath: ShapeModule.m_Scale.y
@@ -11754,6 +11765,11 @@ PrefabInstance:
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
       value: 0.3254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 7319125790376839948, guid: ecd63db0d89417c4092521edb41f8076,
+        type: 3}
+      propertyPath: VelocityModule.x.maxCurve.m_PostInfinity
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7529393899491786024, guid: ecd63db0d89417c4092521edb41f8076,
         type: 3}
@@ -12926,9 +12942,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 102, y: 0, z: 0}
+--- !u!1 &1895412868 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5127865226836196194, guid: ecd63db0d89417c4092521edb41f8076,
+    type: 3}
+  m_PrefabInstance: {fileID: 1446295683}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1895412869 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7529393899491786024, guid: ecd63db0d89417c4092521edb41f8076,
+    type: 3}
+  m_PrefabInstance: {fileID: 1446295683}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1895412870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895412868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92bb63a2acf5c244e9c7ef62acfaa8cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!198 &1895412871 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7319125790376839948, guid: ecd63db0d89417c4092521edb41f8076,
     type: 3}
   m_PrefabInstance: {fileID: 1446295683}
   m_PrefabAsset: {fileID: 0}
