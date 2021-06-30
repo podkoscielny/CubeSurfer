@@ -11727,6 +11727,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5127865226836196194, guid: ecd63db0d89417c4092521edb41f8076,
+        type: 3}
+      propertyPath: m_TagString
+      value: GroundParticles
+      objectReference: {fileID: 0}
     - target: {fileID: 7319125790376839948, guid: ecd63db0d89417c4092521edb41f8076,
         type: 3}
       propertyPath: playOnAwake

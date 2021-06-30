@@ -26,6 +26,15 @@ public class GroundMovement : MonoBehaviour
     {
         _gameManager = GameManager.Instance;
         _groundParticles = GetComponent<ParticleSystem>();
+
+        //Set particles color based on theme currently selected
+        if (CompareTag("GroundParticles"))
+        {
+            ParticleSystem.MainModule settings = _groundParticles.main;
+            Color particlesColor = _gameManager.GroundMaterial.color;
+            particlesColor.a = 0.360784f;
+            settings.startColor = new ParticleSystem.MinMaxGradient(particlesColor);
+        }
     }
 
     void StartGroundMovement() => _groundParticles.Play();
