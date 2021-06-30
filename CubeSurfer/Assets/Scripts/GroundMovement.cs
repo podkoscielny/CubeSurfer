@@ -6,6 +6,7 @@ public class GroundMovement : MonoBehaviour
 {
     private GameManager _gameManager;
     private ParticleSystem _groundParticles;
+    private ParticleSystem.VelocityOverLifetimeModule _groundParticlesVelocity;
 
     #region EventSubscribers
     void OnEnable()
@@ -26,6 +27,7 @@ public class GroundMovement : MonoBehaviour
     {
         _gameManager = GameManager.Instance;
         _groundParticles = GetComponent<ParticleSystem>();
+        _groundParticlesVelocity = _groundParticles.velocityOverLifetime;
 
         //Set particles color based on theme currently selected
         if (CompareTag("GroundParticles"))
@@ -43,12 +45,10 @@ public class GroundMovement : MonoBehaviour
 
     void SpeedUpGroundMovement()
     {
-        ParticleSystem.VelocityOverLifetimeModule velocity = _groundParticles.velocityOverLifetime;
-
         AnimationCurve curve = new AnimationCurve();
         curve.AddKey(0.0f, 1.0f);
         curve.AddKey(1.0f, 0.0f);
         float speed = _gameManager.CurrentSpeed * 1.5f;
-        velocity.x = new ParticleSystem.MinMaxCurve(speed, curve);
+        _groundParticlesVelocity.x = new ParticleSystem.MinMaxCurve(speed, curve);
     }
 }
