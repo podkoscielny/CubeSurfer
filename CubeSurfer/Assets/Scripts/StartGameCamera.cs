@@ -9,8 +9,9 @@ public class StartGameCamera : MonoBehaviour
 
     void SetMainCamera()
     {
-        OnGameStart?.Invoke();
         mainCamera.SetActive(true);
         gameObject.SetActive(false);
     }
+
+    void StartGame() => OnGameStart?.Invoke();
 }
