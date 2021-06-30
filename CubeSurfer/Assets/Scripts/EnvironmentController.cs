@@ -31,7 +31,6 @@ public class EnvironmentController : MonoBehaviour
     private const float BASE_CLOUDS_INTENSITY = 1.46f;
     private const float SWITCH_ON_PITCH = 1.8f;
     private const float SWITCH_OFF_PITCH = 0.8f;
-    private const float INTENSITY_ADDITION = 0.500352f;
 
     #region Event Subscribers
     private void OnEnable()
@@ -65,7 +64,7 @@ public class EnvironmentController : MonoBehaviour
 
     void SetBackgroundColors()
     {
-        float intensity = dummySun.transform.position.y + INTENSITY_ADDITION;
+        float intensity = dummySun.transform.position.y;
 
         mainCamera.backgroundColor = _gameManager.BackgroundColor * intensity;
         RenderSettings.fogColor = _gameManager.FogColor * intensity;
