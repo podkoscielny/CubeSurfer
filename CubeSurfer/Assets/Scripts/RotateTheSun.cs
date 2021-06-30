@@ -6,14 +6,14 @@ public class RotateTheSun : MonoBehaviour
 {
     [SerializeField] GameObject dummySun;
 
-    private GameManager _gameManager;
+    private bool _isMainCameraSet = false;
     private const float ROTATION_SPEED = 10f;
-
-    void Start() => _gameManager = GameManager.Instance;
 
     void Update()
     {
-        if (_gameManager.HasGameStarted) transform.Rotate(Vector3.right, Time.deltaTime * ROTATION_SPEED);
+        if (_isMainCameraSet) transform.Rotate(Vector3.right, Time.deltaTime * ROTATION_SPEED);
         dummySun.transform.rotation = transform.rotation;
     }
+
+    public void StartRotating() => _isMainCameraSet = true;
 }

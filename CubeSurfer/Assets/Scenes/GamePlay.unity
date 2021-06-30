@@ -1365,6 +1365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 963194225}
+  mainLightScript: {fileID: 705507996}
 --- !u!1 &200918549
 GameObject:
   m_ObjectHideFlags: 0
