@@ -29,7 +29,7 @@ public class EnvironmentController : MonoBehaviour
     private const float TURN_LIGHTS_AT_INTENSITY = 0.55f;
     private const float LIGHTS_INTENSITY = 62f;
     private const float BASE_CLOUDS_INTENSITY = 1.46f;
-    private const float SWITCH_ON_PITCH = 1.4f;
+    private const float SWITCH_ON_PITCH = 1.8f;
     private const float SWITCH_OFF_PITCH = 0.8f;
     private const float INTENSITY_ADDITION = 0.500352f;
 
@@ -77,6 +77,7 @@ public class EnvironmentController : MonoBehaviour
             //turn the lights on
             _environmentAnimator.SetTrigger("Activate");
             _areLightsTurnedOn = true;
+            
         }
         else if (intensity > TURN_LIGHTS_AT_INTENSITY && _areLightsTurnedOn)
         {
@@ -121,6 +122,9 @@ public class EnvironmentController : MonoBehaviour
         {
             lights[i].intensity = LIGHTS_INTENSITY;
         }
+
+        _environmentAudio.pitch = SWITCH_ON_PITCH;
+        _environmentAudio.PlayOneShot(switchOnAudio);
     }
 
     void TurnLightsOff()
@@ -132,5 +136,8 @@ public class EnvironmentController : MonoBehaviour
         {
             lights[i].intensity = 0;
         }
+
+        _environmentAudio.pitch = SWITCH_OFF_PITCH;
+        _environmentAudio.PlayOneShot(switchOffAudio);
     }
 }
