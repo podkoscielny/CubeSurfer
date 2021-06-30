@@ -9,6 +9,7 @@ public class GameManager : Singleton<GameManager>
     public float CurrentSpeed { get; set; }
     public Color FogColor { get; private set; }
     public Color BackgroundColor { get; private set; }
+    public Color MainMenuBackgroundColor { get; private set; }
     public Material PlayerMaterial { get; private set; }
     public Material GroundMaterial { get; private set; }
 
@@ -60,10 +61,11 @@ public class GameManager : Singleton<GameManager>
         if (HasGameStarted && !IsGameOver && _scoreText != null) UpdateScore();
     }
 
-    public void SetTheme(Color backgroundColor, Color fogColor, Material groundMaterial, Material playerMaterial) // set colors in options menu
+    public void SetTheme(Color backgroundColor, Color fogColor, Color mainMenuBackgroundColor, Material groundMaterial, Material playerMaterial) // set colors in options menu
     {
         BackgroundColor = backgroundColor;
         FogColor = fogColor;
+        MainMenuBackgroundColor = mainMenuBackgroundColor;
         GroundMaterial = groundMaterial;
         PlayerMaterial = playerMaterial;
     }

@@ -21,7 +21,7 @@ public class MainMenu : MonoBehaviour
     {
         if (_gameManager.PlayerMaterial != null)
         {
-            _mainCamera.backgroundColor = _gameManager.BackgroundColor;
+            _mainCamera.backgroundColor = _gameManager.MainMenuBackgroundColor;
             cubeRenderer.material = _gameManager.PlayerMaterial;
         }
     }

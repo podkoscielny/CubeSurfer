@@ -101,7 +101,7 @@ public class EnvironmentController : MonoBehaviour
             Material playerMaterial = player.GetComponent<Renderer>().material;
             Material groundMaterial = ground.GetComponent<Renderer>().material;
 
-            _gameManager.SetTheme(mainCamera.backgroundColor, RenderSettings.fogColor, groundMaterial, playerMaterial);
+            _gameManager.SetTheme(mainCamera.backgroundColor, RenderSettings.fogColor, mainCamera.backgroundColor, groundMaterial, playerMaterial);
         }
     }
 
