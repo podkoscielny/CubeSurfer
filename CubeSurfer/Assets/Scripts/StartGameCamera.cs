@@ -10,7 +10,7 @@ public class StartGameCamera : MonoBehaviour
 
     void SetMainCamera()
     {
-        mainLightScript.StartRotating();
+        mainLightScript.enabled = true;
         mainCamera.SetActive(true);
         gameObject.SetActive(false);
     }
