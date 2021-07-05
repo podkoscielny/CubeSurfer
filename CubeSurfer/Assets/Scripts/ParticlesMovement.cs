@@ -7,6 +7,7 @@ public class ParticlesMovement : MonoBehaviour
     private GameManager _gameManager;
     private ParticleSystem _particles;
     private ParticleSystem.VelocityOverLifetimeModule _particlesVelocity;
+    private AnimationCurve _curve;
 
     #region EventSubscribers
     void OnEnable()
@@ -29,14 +30,11 @@ public class ParticlesMovement : MonoBehaviour
         _particles = GetComponent<ParticleSystem>();
         _particlesVelocity = _particles.velocityOverLifetime;
 
+        InitializeAnimationCurve();
+
         //Set particles color based on theme currently selected
         if (CompareTag("GroundParticles") && _gameManager.GroundMaterial != null)
-        {
-            ParticleSystem.MainModule settings = _particles.main;
-            Color particlesColor = _gameManager.GroundMaterial.color;
-            particlesColor.a = 0.360784f;
-            settings.startColor = new ParticleSystem.MinMaxGradient(particlesColor);
-        }
+            SetParticlesColor();
     }
 
     void StartParticleMovement() => _particles.Play();
@@ -45,10 +43,22 @@ public class ParticlesMovement : MonoBehaviour
 
     void SpeedUpParticleMovement()
     {
-        AnimationCurve curve = new AnimationCurve();
-        curve.AddKey(0.0f, 1.0f);
-        curve.AddKey(1.0f, 0.0f);
         float speed = _gameManager.CurrentSpeed * 1.5f;
-        _particlesVelocity.x = new ParticleSystem.MinMaxCurve(speed, curve);
+        _particlesVelocity.x = new ParticleSystem.MinMaxCurve(speed, _curve);
+    }
+
+    void InitializeAnimationCurve()
+    {
+        _curve = new AnimationCurve();
+        _curve.AddKey(0.0f, 1.0f);
+        _curve.AddKey(1.0f, 0.0f);
+    }
+
+    void SetParticlesColor()
+    {
+        ParticleSystem.MainModule settings = _particles.main;
+        Color particlesColor = _gameManager.GroundMaterial.color;
+        particlesColor.a = 0.360784f;
+        settings.startColor = new ParticleSystem.MinMaxGradient(particlesColor);
     }
 }
