@@ -14,6 +14,7 @@ public class EnvironmentController : MonoBehaviour
     [SerializeField] GameObject dummySun;
     [SerializeField] Material lightBulbsMaterial;
     [SerializeField] Material ledStripsMaterial;
+    [SerializeField] GameObject flyingLamps;
     [SerializeField] Light[] lights;
 
     [Header("Audio")]
@@ -36,11 +37,13 @@ public class EnvironmentController : MonoBehaviour
     private void OnEnable()
     {
         PlayerController.OnGameOver += SetGameOverProperties;
+        StartGameCamera.OnGameStart += EnableFlyingLamps;
     }
 
     private void OnDisable()
     {
         PlayerController.OnGameOver -= SetGameOverProperties;
+        StartGameCamera.OnGameStart -= EnableFlyingLamps;
         lightBulbsMaterial.DisableKeyword("_EMISSION");
         ledStripsMaterial.DisableKeyword("_EMISSION");
     }
@@ -111,6 +114,8 @@ public class EnvironmentController : MonoBehaviour
         gameOverLamp.SetActive(true);
         gameOverLamp.transform.LookAt(player.transform);
     }
+
+    void EnableFlyingLamps() => flyingLamps.SetActive(true);
 
     void TurnLightsOn()
     {

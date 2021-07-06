@@ -1063,7 +1063,7 @@ Transform:
   m_GameObject: {fileID: 147779552}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0.49, y: 0.41, z: -0.004121731}
-  m_LocalScale: {x: 0.023529412, y: 0.49367166, z: 0.40000004}
+  m_LocalScale: {x: 0.023529412, y: 0.49578, z: 0.40000004}
   m_Children: []
   m_Father: {fileID: 1671187985}
   m_RootOrder: 1
@@ -1346,7 +1346,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 193847264}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 12.93, z: -2.45}
+  m_LocalPosition: {x: 0, y: 23, z: -2.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -7896,6 +7896,7 @@ MonoBehaviour:
   dummySun: {fileID: 997320982}
   lightBulbsMaterial: {fileID: 2100000, guid: 8811451e67a70c84cace4b386b2995b2, type: 2}
   ledStripsMaterial: {fileID: 2100000, guid: 9a05acf8cb433e24f8955c673cf32dae, type: 2}
+  flyingLamps: {fileID: 1703266568}
   lights:
   - {fileID: 449064835}
   - {fileID: 1474532546}
@@ -8421,7 +8422,7 @@ Transform:
   m_GameObject: {fileID: 871489303}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0.49, y: 0.41, z: -0.004121731}
-  m_LocalScale: {x: 0.023529412, y: 0.49367166, z: 0.40000004}
+  m_LocalScale: {x: 0.023529412, y: 0.49578, z: 0.40000004}
   m_Children: []
   m_Father: {fileID: 1671187985}
   m_RootOrder: 0
@@ -12792,7 +12793,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1703266569
 Transform:
   m_ObjectHideFlags: 0
