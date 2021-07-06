@@ -30,6 +30,7 @@ public class EnvironmentController : MonoBehaviour
     private const float TURN_LIGHTS_AT_INTENSITY = 0.55f;
     private const float LIGHTS_INTENSITY = 62f;
     private const float BASE_CLOUDS_INTENSITY = 1.46f;
+    private const float BASE_FRESNEL_OPACITY = 1f;
     private const float SWITCH_ON_PITCH = 1.8f;
     private const float SWITCH_OFF_PITCH = 0.8f;
 
@@ -73,6 +74,7 @@ public class EnvironmentController : MonoBehaviour
         RenderSettings.fogColor = _gameManager.FogColor * intensity;
         RenderSettings.ambientLight = _ambientLight * intensity;
         _cloudsMaterial.SetFloat("Vector1_245C3B23", BASE_CLOUDS_INTENSITY * intensity);
+        _cloudsMaterial.SetFloat("Vector1_677FFF29", BASE_FRESNEL_OPACITY * intensity);
 
         if (intensity < TURN_LIGHTS_AT_INTENSITY && !_areLightsTurnedOn)
         {
