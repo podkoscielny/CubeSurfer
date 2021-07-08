@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class EnvironmentController : MonoBehaviour
 {
-    [Header("Environment Change")]
+    [Header("GameObjects")]
     [SerializeField] GameObject gameOverLamp;
     [SerializeField] GameObject player;
     [SerializeField] GameObject ground;
-    [SerializeField] Camera mainCamera;
-    [SerializeField] Camera startCamera;
     [SerializeField] GameObject boxVolume;
     [SerializeField] GameObject dummySun;
+    [SerializeField] GameObject flyingLamps;
+
+    [Header("Cameras")]
+    [SerializeField] Camera mainCamera;
+    [SerializeField] Camera startCamera;
+
+    [Header("Lights")]
     [SerializeField] Material lightBulbsMaterial;
     [SerializeField] Material ledStripsMaterial;
-    [SerializeField] GameObject flyingLamps;
     [SerializeField] Light[] lights;
 
     [Header("Audio")]
@@ -27,6 +31,9 @@ public class EnvironmentController : MonoBehaviour
     private Animator _environmentAnimator;
     private AudioSource _environmentAudio;
     private bool _areLightsTurnedOn = false;
+    private Color _turnedLightsOffColor = new Color(r: 0, g: 0, b: 0, a: 0);
+    private Color _lightBulbsEmissionColor = new Color(r: 1.304f, g: 1.270f, b: 1.086f, a: 1f);
+    private Color _ledStripsEmissionColor = new Color(r: 1.662f, g: 1.662f, b: 1.662f, a: 1f);
     private const float TURN_LIGHTS_AT_INTENSITY = 0.55f;
     private const float LIGHTS_INTENSITY = 62f;
     private const float BASE_CLOUDS_INTENSITY = 1.46f;
@@ -45,25 +52,28 @@ public class EnvironmentController : MonoBehaviour
     {
         PlayerController.OnGameOver -= SetGameOverProperties;
         StartGameCamera.OnGameStart -= EnableFlyingLamps;
-        lightBulbsMaterial.DisableKeyword("_EMISSION");
-        ledStripsMaterial.DisableKeyword("_EMISSION");
     }
     #endregion
 
     void Start()
+    {
+        InitializeProperties();
+        SetThemeColors();
+        SetEmissionColor(_turnedLightsOffColor);
+    }
+
+    void Update()
+    {
+        if (_gameManager.HasGameStarted) SetBackgroundColors();
+    }
+
+    void InitializeProperties()
     {
         _gameManager = GameManager.Instance;
         _ambientLight = RenderSettings.ambientLight;
         _cloudsMaterial = GameObject.FindGameObjectWithTag("Clouds").GetComponent<Renderer>().material;
         _environmentAnimator = GetComponent<Animator>();
         _environmentAudio = GetComponent<AudioSource>();
-
-        SetThemeColors();
-    }
-
-    void Update()
-    {
-        if (_gameManager.HasGameStarted) SetBackgroundColors();
     }
 
     void SetBackgroundColors()
@@ -121,8 +131,7 @@ public class EnvironmentController : MonoBehaviour
 
     void TurnLightsOn()
     {
-        lightBulbsMaterial.EnableKeyword("_EMISSION");
-        ledStripsMaterial.EnableKeyword("_EMISSION");
+        SetEmissionColor(_lightBulbsEmissionColor, _ledStripsEmissionColor);
 
         for (int i = 0; i < lights.Length; i++)
         {
@@ -135,8 +144,7 @@ public class EnvironmentController : MonoBehaviour
 
     void TurnLightsOff()
     {
-        lightBulbsMaterial.DisableKeyword("_EMISSION");
-        ledStripsMaterial.DisableKeyword("_EMISSION");
+        SetEmissionColor(_turnedLightsOffColor);
 
         for (int i = 0; i < lights.Length; i++)
         {
@@ -145,5 +153,17 @@ public class EnvironmentController : MonoBehaviour
 
         _environmentAudio.pitch = SWITCH_OFF_PITCH;
         _environmentAudio.PlayOneShot(switchOffAudio);
+    }
+
+    void SetEmissionColor(Color lampsColor, Color ledsColor)
+    {
+        lightBulbsMaterial.SetColor("_EmissionColor", lampsColor);
+        ledStripsMaterial.SetColor("_EmissionColor", ledsColor);
+    }
+
+    void SetEmissionColor(Color color)
+    {
+        lightBulbsMaterial.SetColor("_EmissionColor", color);
+        ledStripsMaterial.SetColor("_EmissionColor", color);
     }
 }
