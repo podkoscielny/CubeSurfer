@@ -9,7 +9,7 @@ public class CameraFollow : MonoBehaviour
 
     private GameManager _gameManager;
 
-    private Vector3 _gameplayOffset = new Vector3(0, 4.18f, -9.7f);
+    private Vector3 _gameplayOffset = new Vector3(0, 3.667f, -9.7f);
     private Vector3 _gameoverOffset = new Vector3(0, 2f, -5f);
     private Vector3 _velocity = Vector3.zero; // ref value for SmoothDamp
     private const float SMOOTH_TIME = 0.125f;

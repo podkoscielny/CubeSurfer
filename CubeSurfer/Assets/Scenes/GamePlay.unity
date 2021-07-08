@@ -7890,13 +7890,13 @@ MonoBehaviour:
   gameOverLamp: {fileID: 247342227}
   player: {fileID: 1203637796}
   ground: {fileID: 1671187984}
-  mainCamera: {fileID: 963194227}
-  startCamera: {fileID: 193847268}
   boxVolume: {fileID: 433918861}
   dummySun: {fileID: 997320982}
+  flyingLamps: {fileID: 1703266568}
+  mainCamera: {fileID: 963194227}
+  startCamera: {fileID: 193847268}
   lightBulbsMaterial: {fileID: 2100000, guid: 8811451e67a70c84cace4b386b2995b2, type: 2}
   ledStripsMaterial: {fileID: 2100000, guid: 9a05acf8cb433e24f8955c673cf32dae, type: 2}
-  flyingLamps: {fileID: 1703266568}
   lights:
   - {fileID: 449064835}
   - {fileID: 1474532546}
@@ -9146,13 +9146,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.05712839, y: 0, z: 0, w: 0.99836683}
-  m_LocalPosition: {x: 0, y: 4.18, z: -9.7}
+  m_LocalRotation: {x: 0.055978343, y: 0, z: 0, w: 0.998432}
+  m_LocalPosition: {x: 0, y: 3.667, z: -9.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 6.55, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 6.418, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
