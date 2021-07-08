@@ -7,29 +7,25 @@ public enum Side { Left, Mid, Right }
 
 public class PlayerController : MonoBehaviour
 {
-    private GameManager _gameManager;
     public static event Action OnGameOver;
 
-    //Audio
     [SerializeField] AudioClip slideSound;
     [SerializeField] AudioClip jumpSound;
-    private AudioSource _playerAudio;
-    private const float SOUND_VOLUME = 1f;
 
-    //Player movement
     private Rigidbody _playerRb;
-    private const float JUMP_FORCE = 180.0f;
-    private const float TORQUE_FORCE = 14.0f;
-    private const float SLIDE_FORCE = 38f;
-
-    private const float LANE_BOUND = 6f;
+    private AudioSource _playerAudio;
+    private GameManager _gameManager;
     private float _currentLaneBound = 0f;
-
     private Side _currentSide = Side.Mid;
-
     private bool _isOnGround = true;
     private bool _isChangingLane = false;
     private bool _isSlidingLeft = false;
+
+    private const float SOUND_VOLUME = 1f;
+    private const float LANE_BOUND = 6f;
+    private const float JUMP_FORCE = 180.0f;
+    private const float TORQUE_FORCE = 14.0f;
+    private const float SLIDE_FORCE = 38f;
 
     void Start()
     {
@@ -41,10 +37,22 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(Time.timeScale > 0)
+        if (!_isOnGround || _gameManager.IsGameOver || !_gameManager.HasGameStarted) return;
+
+        if (Time.timeScale > 0)
         {
-            ChangeLane();
-            Jump();
+            if (Input.GetKeyDown(KeyCode.Space) && !_isChangingLane)
+            {
+                Jump();
+            }
+            else if (Input.GetKeyDown(KeyCode.A) && _currentSide != Side.Left)
+            {
+                MovePlayer(Vector3.left, Side.Left, Side.Right);
+            }
+            else if (Input.GetKeyDown(KeyCode.D) && _currentSide != Side.Right)
+            {
+                MovePlayer(Vector3.right, Side.Right, Side.Left);
+            }
         }
 
         if (_isChangingLane) StopHorizontalMovement();
@@ -52,28 +60,11 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && _isOnGround && !_isChangingLane && !_gameManager.IsGameOver)
-        {
-            _playerRb.AddForce(Vector3.up * JUMP_FORCE, ForceMode.Impulse);
-            _playerRb.AddTorque(Vector3.right * TORQUE_FORCE, ForceMode.Impulse);
-            _isOnGround = false;
+        _playerRb.AddForce(Vector3.up * JUMP_FORCE, ForceMode.Impulse);
+        _playerRb.AddTorque(Vector3.right * TORQUE_FORCE, ForceMode.Impulse);
+        _isOnGround = false;
 
-            _playerAudio.PlayOneShot(jumpSound, SOUND_VOLUME);
-        }
-    }
-
-    void ChangeLane()
-    {
-        if (!_isOnGround || _gameManager.IsGameOver || !_gameManager.HasGameStarted) return;
-
-        if (Input.GetKeyDown(KeyCode.A) && _currentSide != Side.Left)
-        {
-            MovePlayer(Vector3.left, Side.Left, Side.Right);
-        }
-        else if (Input.GetKeyDown(KeyCode.D) && _currentSide != Side.Right)
-        {
-            MovePlayer(Vector3.right, Side.Right, Side.Left);
-        }
+        _playerAudio.PlayOneShot(jumpSound, SOUND_VOLUME);
     }
 
     void MovePlayer(Vector3 slideDirection, Side farBound, Side nearBound)
