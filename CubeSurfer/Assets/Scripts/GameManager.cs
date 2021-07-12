@@ -6,20 +6,14 @@ using TMPro;
 public class GameManager : Singleton<GameManager>
 {
     //Theme properties
-    public float CurrentSpeed { get; set; }
-    public Color FogColor { get; private set; }
-    public Color BackgroundColor { get; private set; }
-    public Material PlayerMaterial { get; private set; }
-    public Material GroundMaterial { get; private set; }
-    public Material MultiplierMaterial { get; private set; }
-    public Material CloudsMaterial { get; private set; }
-    public Material ObstaclesMaterial { get; private set; }
+    public ThemeColor Theme { get; private set; }
 
     //Game state
     public bool IsGameOver { get; private set; } = false;
     public bool HasGameStarted { get; private set; } = false;
 
     //Score and level
+    public float CurrentSpeed { get; set; }
     public int ScoreMultiplier { get; set; } = 1;
     public int Level { get; private set; } = 1;
     private float _score = 0;
@@ -56,23 +50,18 @@ public class GameManager : Singleton<GameManager>
     }
     #endregion
 
-    private void Start() => SaveSystem.Load();
+    private void Start()
+    {
+        SaveSystem.Load();
+        Theme = ThemeManager.Instance.themes[0];
+    }
 
     private void Update()
     {
         if (HasGameStarted && !IsGameOver && _scoreText != null) UpdateScore();
     }
 
-    public void SetTheme(ThemeColor theme) // set colors in options menu
-    {
-        BackgroundColor = theme.backgroundColor;
-        FogColor = theme.fogColor;
-        GroundMaterial = theme.groundMaterial;
-        PlayerMaterial = theme.playerMaterial;
-        MultiplierMaterial = theme.multiplierMaterial;
-        CloudsMaterial = theme.cloudsMaterial;
-        ObstaclesMaterial = theme.obstaclesMaterial;
-    }
+    public void SetTheme(ThemeColor theme) => Theme = theme;
 
     public void ResetGame()
     {

@@ -9,19 +9,18 @@ public class ObjectPooler : Singleton<ObjectPooler>
 
     private Queue<GameObject> _obstaclesPool;
 
-    private GameManager _gameManager;
+    private ThemeColor _currentTheme;
 
     void Start()
     {
-        _gameManager = GameManager.Instance;
+        _currentTheme = GameManager.Instance.Theme;
 
         _obstaclesPool = new Queue<GameObject>();
 
         for (int i = 0; i < poolSize; i++)
         {
             GameObject instance = Instantiate(obstaclePrefab);
-            if (_gameManager.ObstaclesMaterial != null)
-                instance.GetComponent<Renderer>().material = _gameManager.ObstaclesMaterial;
+            instance.GetComponent<Renderer>().material = _currentTheme.obstaclesMaterial;
 
             AddToPool(instance);
         }

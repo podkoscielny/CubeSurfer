@@ -3,34 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-[System.Serializable]
-public class ThemeColor
-{
-    public string name;
-    public Color fogColor;
-    public Color backgroundColor;
-    public Material playerMaterial;
-    public Material groundMaterial;
-    public Material multiplierMaterial;
-    public Material cloudsMaterial;
-    public Material obstaclesMaterial;
-}
-
 public class SettingsMenu : MonoBehaviour
 {
     [SerializeField] Renderer cubeRenderer;
     [SerializeField] TMP_Dropdown resolutionDropdown;
     [SerializeField] TMP_Dropdown graphicsDropdown;
     [SerializeField] TMP_Dropdown themeDropdown;
-    [SerializeField] List<ThemeColor> themes;
 
     private GameManager _gameManager;
+    private List<ThemeColor> _themes;
     private Resolution[] _resolutions;
     private Camera _mainCamera;
 
     void Start()
     {
         _gameManager = GameManager.Instance;
+        _themes = ThemeManager.Instance.themes;
         _mainCamera = Camera.main;
 
         SetQualityOptions();
@@ -48,7 +36,7 @@ public class SettingsMenu : MonoBehaviour
 
     public void SetTheme(int themeIndex)
     {
-        ThemeColor theme = themes[themeIndex];
+        ThemeColor theme = _themes[themeIndex];
 
         _mainCamera.backgroundColor = theme.backgroundColor;
         cubeRenderer.material = theme.playerMaterial;
@@ -81,12 +69,12 @@ public class SettingsMenu : MonoBehaviour
 
         int currentThemeIndex = 0;
 
-        for (int i = 0; i < themes.Count; i++)
+        for (int i = 0; i < _themes.Count; i++)
         {
-            string themeName = themes[i].name;
+            string themeName = _themes[i].name;
             themeOptions.Add(themeName);
 
-            if (themes[i].backgroundColor == _gameManager.BackgroundColor)
+            if (_themes[i].backgroundColor == _gameManager.Theme.backgroundColor)
                 currentThemeIndex = i;
         }
 

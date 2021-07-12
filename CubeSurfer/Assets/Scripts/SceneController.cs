@@ -45,7 +45,7 @@ public class SceneController : MonoBehaviour
 
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
         progressBar.gameObject.SetActive(true);
-        progressFill.color = _gameManager.BackgroundColor;
+        progressFill.color = _gameManager.Theme.backgroundColor;
 
         while (!operation.isDone)
         {

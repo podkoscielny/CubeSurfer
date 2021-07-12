@@ -6,12 +6,12 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] Renderer cubeRenderer;
 
-    private GameManager _gameManager;
+    private ThemeColor _currentTheme;
     private Camera _mainCamera;
 
     void Start()
     {
-        _gameManager = GameManager.Instance;
+        _currentTheme = GameManager.Instance.Theme;
         _mainCamera = Camera.main;
 
         SetMenuTheme();
@@ -19,10 +19,7 @@ public class MainMenu : MonoBehaviour
 
     private void SetMenuTheme()
     {
-        if (_gameManager.PlayerMaterial != null)
-        {
-            _mainCamera.backgroundColor = _gameManager.BackgroundColor;
-            cubeRenderer.material = _gameManager.PlayerMaterial;
-        }
+        _mainCamera.backgroundColor = _currentTheme.backgroundColor;
+        cubeRenderer.material = _currentTheme.playerMaterial;
     }
 }

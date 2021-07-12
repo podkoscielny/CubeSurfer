@@ -30,6 +30,7 @@ public class EnvironmentController : MonoBehaviour
     [Header("Particle System")]
     [SerializeField] ParticleSystem multiplierParticles;
 
+    private ThemeColor _currentTheme;
     private Color _ambientLight;
     private GameManager _gameManager;
     private Animator _environmentAnimator;
@@ -78,14 +79,15 @@ public class EnvironmentController : MonoBehaviour
         _ambientLight = RenderSettings.ambientLight;
         _environmentAnimator = GetComponent<Animator>();
         _environmentAudio = GetComponent<AudioSource>();
+        _currentTheme = _gameManager.Theme;
     }
 
     void SetBackgroundColors()
     {
         float intensity = dummySun.transform.position.y;
 
-        mainCamera.backgroundColor = _gameManager.BackgroundColor * intensity;
-        RenderSettings.fogColor = _gameManager.FogColor * intensity;
+        mainCamera.backgroundColor = _currentTheme.backgroundColor * intensity;
+        RenderSettings.fogColor = _currentTheme.fogColor * intensity;
         RenderSettings.ambientLight = _ambientLight * intensity;
         _cloudsMaterial.SetFloat("Vector1_245C3B23", BASE_CLOUDS_INTENSITY * intensity);
         _cloudsMaterial.SetFloat("Vector1_677FFF29", BASE_FRESNEL_OPACITY * intensity);
@@ -95,7 +97,7 @@ public class EnvironmentController : MonoBehaviour
             //turn the lights on
             _environmentAnimator.SetTrigger("Activate");
             _areLightsTurnedOn = true;
-            
+
         }
         else if (intensity > TURN_LIGHTS_AT_INTENSITY && _areLightsTurnedOn)
         {
@@ -107,40 +109,18 @@ public class EnvironmentController : MonoBehaviour
 
     void SetThemeColors()
     {
-        if (_gameManager.PlayerMaterial != null)
-        {
-            mainCamera.backgroundColor = _gameManager.BackgroundColor;
-            startCamera.backgroundColor = _gameManager.BackgroundColor;
-            RenderSettings.fogColor = _gameManager.FogColor;
-            player.GetComponent<Renderer>().material = _gameManager.PlayerMaterial;
-            ground.GetComponent<Renderer>().material = _gameManager.GroundMaterial;
-            pointMultiplier.GetComponent<Renderer>().material = _gameManager.MultiplierMaterial;
-            clouds.GetComponent<Renderer>().material = _gameManager.CloudsMaterial;
+        mainCamera.backgroundColor = _currentTheme.backgroundColor;
+        startCamera.backgroundColor = _currentTheme.backgroundColor;
+        RenderSettings.fogColor = _currentTheme.fogColor;
+        player.GetComponent<Renderer>().material = _currentTheme.playerMaterial;
+        ground.GetComponent<Renderer>().material = _currentTheme.groundMaterial;
+        pointMultiplier.GetComponent<Renderer>().material = _currentTheme.multiplierMaterial;
+        clouds.GetComponent<Renderer>().material = _currentTheme.cloudsMaterial;
 
-            ParticleSystem.MainModule settings = multiplierParticles.main;
-            settings.startColor = _gameManager.MultiplierMaterial.color;
-        }
-        else
-        {
-            ThemeColor theme = GetCurrentTheme();
-            _gameManager.SetTheme(theme);
-        }
+        ParticleSystem.MainModule settings = multiplierParticles.main;
+        settings.startColor = _currentTheme.multiplierMaterial.color;
 
         _cloudsMaterial = clouds.GetComponent<Renderer>().material;
-    }
-
-    ThemeColor GetCurrentTheme()
-    {
-        ThemeColor theme = new ThemeColor();
-
-        theme.backgroundColor = mainCamera.backgroundColor;
-        theme.fogColor = RenderSettings.fogColor;
-        theme.groundMaterial = ground.GetComponent<Renderer>().material;
-        theme.playerMaterial = player.GetComponent<Renderer>().material;
-        theme.multiplierMaterial = pointMultiplier.GetComponent<Renderer>().material;
-        theme.cloudsMaterial = clouds.GetComponent<Renderer>().material;
-
-        return theme;
     }
 
     void SetGameOverProperties()

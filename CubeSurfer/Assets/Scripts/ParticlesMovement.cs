@@ -33,7 +33,7 @@ public class ParticlesMovement : MonoBehaviour
         InitializeAnimationCurve();
 
         //Set particles color based on theme currently selected
-        if (CompareTag("GroundParticles") && _gameManager.GroundMaterial != null)
+        if (CompareTag("GroundParticles") && _gameManager.Theme.groundMaterial != null)
             SetParticlesColor();
     }
 
@@ -57,7 +57,7 @@ public class ParticlesMovement : MonoBehaviour
     void SetParticlesColor()
     {
         ParticleSystem.MainModule settings = _particles.main;
-        Color particlesColor = _gameManager.GroundMaterial.color;
+        Color particlesColor = _gameManager.Theme.groundMaterial.color;
         particlesColor.a = 0.360784f;
         settings.startColor = new ParticleSystem.MinMaxGradient(particlesColor);
     }
