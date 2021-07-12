@@ -129,7 +129,6 @@ public class EnvironmentController : MonoBehaviour
 
         theme.backgroundColor = mainCamera.backgroundColor;
         theme.fogColor = RenderSettings.fogColor;
-        theme.mainMenuBackgroundColor = mainCamera.backgroundColor;
         theme.groundMaterial = ground.GetComponent<Renderer>().material;
         theme.playerMaterial = player.GetComponent<Renderer>().material;
         theme.multiplierMaterial = pointMultiplier.GetComponent<Renderer>().material;

@@ -9,7 +9,6 @@ public class ThemeColor
     public string name;
     public Color fogColor;
     public Color backgroundColor;
-    public Color mainMenuBackgroundColor;
     public Material playerMaterial;
     public Material groundMaterial;
     public Material multiplierMaterial;
@@ -51,7 +50,7 @@ public class SettingsMenu : MonoBehaviour
     {
         ThemeColor theme = themes[themeIndex];
 
-        _mainCamera.backgroundColor = theme.mainMenuBackgroundColor;
+        _mainCamera.backgroundColor = theme.backgroundColor;
         cubeRenderer.material = theme.playerMaterial;
 
         _gameManager.SetTheme(theme);

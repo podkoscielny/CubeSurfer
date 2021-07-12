@@ -9,7 +9,6 @@ public class GameManager : Singleton<GameManager>
     public float CurrentSpeed { get; set; }
     public Color FogColor { get; private set; }
     public Color BackgroundColor { get; private set; }
-    public Color MainMenuBackgroundColor { get; private set; }
     public Material PlayerMaterial { get; private set; }
     public Material GroundMaterial { get; private set; }
     public Material MultiplierMaterial { get; private set; }
@@ -68,7 +67,6 @@ public class GameManager : Singleton<GameManager>
     {
         BackgroundColor = theme.backgroundColor;
         FogColor = theme.fogColor;
-        MainMenuBackgroundColor = theme.mainMenuBackgroundColor;
         GroundMaterial = theme.groundMaterial;
         PlayerMaterial = theme.playerMaterial;
         MultiplierMaterial = theme.multiplierMaterial;
