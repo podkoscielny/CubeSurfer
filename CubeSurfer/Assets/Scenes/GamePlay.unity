@@ -1305,7 +1305,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.41960785, g: 0.8666667, b: 1, a: 1}
+  m_BackGroundColor: {r: 0, g: 0.6509804, b: 0.8509804, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2455,7 +2455,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.43983898, g: 0.7924528, b: 0.13830544, a: 1}
+      maxColor: {r: 0.81960785, g: 0.6666667, b: 0.06666667, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9106,7 +9106,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.41960785, g: 0.8666667, b: 1, a: 1}
+  m_BackGroundColor: {r: 0, g: 0.6509804, b: 0.8509804, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -14717,11 +14717,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Point Multiplier
-      objectReference: {fileID: 0}
-    - target: {fileID: 1509943423588623222, guid: 7d9cbbd00fb51d44bb4ce546be55d42b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d9cbbd00fb51d44bb4ce546be55d42b, type: 3}
