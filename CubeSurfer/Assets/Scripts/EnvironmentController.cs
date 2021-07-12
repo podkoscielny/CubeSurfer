@@ -27,6 +27,9 @@ public class EnvironmentController : MonoBehaviour
     [SerializeField] AudioClip switchOnAudio;
     [SerializeField] AudioClip switchOffAudio;
 
+    [Header("Particle System")]
+    [SerializeField] ParticleSystem multiplierParticles;
+
     private Color _ambientLight;
     private GameManager _gameManager;
     private Animator _environmentAnimator;
@@ -113,6 +116,9 @@ public class EnvironmentController : MonoBehaviour
             ground.GetComponent<Renderer>().material = _gameManager.GroundMaterial;
             pointMultiplier.GetComponent<Renderer>().material = _gameManager.MultiplierMaterial;
             clouds.GetComponent<Renderer>().material = _gameManager.CloudsMaterial;
+
+            ParticleSystem.MainModule settings = multiplierParticles.main;
+            settings.startColor = _gameManager.MultiplierMaterial.color;
         }
         else
         {

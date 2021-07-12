@@ -2461,7 +2461,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.81960785, g: 0.6666667, b: 0.06666667, a: 1}
+      maxColor: {r: 0.25490198, g: 0.2784314, b: 0.61960787, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -7912,6 +7912,7 @@ MonoBehaviour:
   - {fileID: 1139492013}
   switchOnAudio: {fileID: 8300000, guid: 3fc20dec8f9fb93429a27bd9742720bb, type: 3}
   switchOffAudio: {fileID: 8300000, guid: b9e7df429e884ce4683dc48861c0c83b, type: 3}
+  multiplierParticles: {fileID: 304914177}
 --- !u!82 &809568271
 AudioSource:
   m_ObjectHideFlags: 0
