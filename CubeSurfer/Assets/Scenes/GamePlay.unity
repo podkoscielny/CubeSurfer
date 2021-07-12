@@ -15,7 +15,7 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 1, g: 0.8066038, b: 0.8742491, a: 1}
+  m_FogColor: {r: 1, g: 1, b: 1, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.005
   m_LinearFogStart: -36.3
@@ -1305,7 +1305,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 1, g: 0.1254902, b: 0.53333336, a: 1}
+  m_BackGroundColor: {r: 0.45882353, g: 0.54509807, b: 0.99215686, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -8309,11 +8309,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6b958044c7df9514592cda69e170a5af, type: 2}
+      objectReference: {fileID: 2100000, guid: 65433f3e1ab724048a1e42e57f3ebc61, type: 2}
     - target: {fileID: 919132149155446097, guid: a0726b24b7ebe1741923d9797370a623,
         type: 3}
       propertyPath: m_Name
       value: Sky_Disk_100k
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a0726b24b7ebe1741923d9797370a623,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a0726b24b7ebe1741923d9797370a623,
         type: 3}
@@ -9106,7 +9111,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 1, g: 0.12549019, b: 0.533438, a: 1}
+  m_BackGroundColor: {r: 0.45882353, g: 0.54509807, b: 0.99215686, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -10432,7 +10437,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f09d42a84917a8d48bcfb8f8980e03a4, type: 2}
+  - {fileID: 2100000, guid: d084d55cc21f9104ca62255631420518, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12748,7 +12753,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f69861a08ff54f64da2667962c34a2c7, type: 2}
+  - {fileID: 2100000, guid: 35545c31c3eb83a45849718f25e28c16, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14658,6 +14663,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1509943422928091252, guid: 7d9cbbd00fb51d44bb4ce546be55d42b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2bb0547b21fd3224fb64e078d9913b21, type: 2}
     - target: {fileID: 1509943423588623218, guid: 7d9cbbd00fb51d44bb4ce546be55d42b,
         type: 3}
       propertyPath: m_RootOrder
@@ -14717,6 +14727,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Point Multiplier
+      objectReference: {fileID: 0}
+    - target: {fileID: 1509943423588623222, guid: 7d9cbbd00fb51d44bb4ce546be55d42b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d9cbbd00fb51d44bb4ce546be55d42b, type: 3}
