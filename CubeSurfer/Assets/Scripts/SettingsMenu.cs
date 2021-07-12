@@ -12,6 +12,9 @@ public class ThemeColor
     public Color mainMenuBackgroundColor;
     public Material playerMaterial;
     public Material groundMaterial;
+    public Material multiplierMaterial;
+    public Material cloudsMaterial;
+    public Material obstaclesMaterial;
 }
 
 public class SettingsMenu : MonoBehaviour
@@ -51,7 +54,7 @@ public class SettingsMenu : MonoBehaviour
         _mainCamera.backgroundColor = theme.mainMenuBackgroundColor;
         cubeRenderer.material = theme.playerMaterial;
 
-        _gameManager.SetTheme(theme.backgroundColor, theme.fogColor, theme.mainMenuBackgroundColor, theme.groundMaterial, theme.playerMaterial);
+        _gameManager.SetTheme(theme);
     }
 
     private void SetQualityOptions()

@@ -12,6 +12,9 @@ public class GameManager : Singleton<GameManager>
     public Color MainMenuBackgroundColor { get; private set; }
     public Material PlayerMaterial { get; private set; }
     public Material GroundMaterial { get; private set; }
+    public Material MultiplierMaterial { get; private set; }
+    public Material CloudsMaterial { get; private set; }
+    public Material ObstaclesMaterial { get; private set; }
 
     //Game state
     public bool IsGameOver { get; private set; } = false;
@@ -61,13 +64,16 @@ public class GameManager : Singleton<GameManager>
         if (HasGameStarted && !IsGameOver && _scoreText != null) UpdateScore();
     }
 
-    public void SetTheme(Color backgroundColor, Color fogColor, Color mainMenuBackgroundColor, Material groundMaterial, Material playerMaterial) // set colors in options menu
+    public void SetTheme(ThemeColor theme) // set colors in options menu
     {
-        BackgroundColor = backgroundColor;
-        FogColor = fogColor;
-        MainMenuBackgroundColor = mainMenuBackgroundColor;
-        GroundMaterial = groundMaterial;
-        PlayerMaterial = playerMaterial;
+        BackgroundColor = theme.backgroundColor;
+        FogColor = theme.fogColor;
+        MainMenuBackgroundColor = theme.mainMenuBackgroundColor;
+        GroundMaterial = theme.groundMaterial;
+        PlayerMaterial = theme.playerMaterial;
+        MultiplierMaterial = theme.multiplierMaterial;
+        CloudsMaterial = theme.cloudsMaterial;
+        ObstaclesMaterial = theme.obstaclesMaterial;
     }
 
     public void ResetGame()

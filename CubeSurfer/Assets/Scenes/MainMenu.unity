@@ -6674,18 +6674,40 @@ MonoBehaviour:
     mainMenuBackgroundColor: {r: 0.41960785, g: 0.8666667, b: 1, a: 1}
     playerMaterial: {fileID: 2100000, guid: 55bd19ed91c641343a223e7a47178a91, type: 2}
     groundMaterial: {fileID: 2100000, guid: c2a902eb095929e4eacb95d9c3d3ec0f, type: 2}
+    multiplierMaterial: {fileID: 2100000, guid: 813cf66c9661cc745a52afc01b24f611,
+      type: 2}
+    cloudsMaterial: {fileID: 2100000, guid: b759020a998b8084ab48a5092d3c5da3, type: 2}
+    obstaclesMaterial: {fileID: 2100000, guid: 680e87e6354e323429ffdebb1df34889, type: 2}
   - name: Yellow
-    fogColor: {r: 0.98039216, g: 0.8156863, b: 0.31764707, a: 1}
-    backgroundColor: {r: 1, g: 0.827451, b: 0.41960785, a: 1}
-    mainMenuBackgroundColor: {r: 0.79607844, g: 0.5921569, b: 0.27450982, a: 1}
+    fogColor: {r: 0.9764706, g: 0.8627451, b: 0.36078432, a: 1}
+    backgroundColor: {r: 0.9764706, g: 0.8627451, b: 0.36078432, a: 1}
+    mainMenuBackgroundColor: {r: 0.9764706, g: 0.8627451, b: 0.36078432, a: 1}
     playerMaterial: {fileID: 2100000, guid: 8009b54c2fa767f418c4c55fb7a8823d, type: 2}
     groundMaterial: {fileID: 2100000, guid: 08c6d52a8f2d4db4b9e26296702a850a, type: 2}
-  - name: Sand
-    fogColor: {r: 1, g: 0.6666667, b: 0.050980393, a: 1}
-    backgroundColor: {r: 1, g: 0.47843137, b: 0.050980393, a: 1}
-    mainMenuBackgroundColor: {r: 0.3764706, g: 0.7019608, b: 0.94509804, a: 1}
+    multiplierMaterial: {fileID: 2100000, guid: 2bb0547b21fd3224fb64e078d9913b21,
+      type: 2}
+    cloudsMaterial: {fileID: 2100000, guid: 34f11ffc4c2d9304f928fca9e945c503, type: 2}
+    obstaclesMaterial: {fileID: 2100000, guid: 5e17c27e1d821b14ab29b30ea5addb66, type: 2}
+  - name: Purple Orange
+    fogColor: {r: 0.99215686, g: 0.99215686, b: 0.99215686, a: 1}
+    backgroundColor: {r: 0.45882353, g: 0.54509807, b: 0.99215686, a: 1}
+    mainMenuBackgroundColor: {r: 0.45882353, g: 0.54509807, b: 0.99215686, a: 1}
     playerMaterial: {fileID: 2100000, guid: d084d55cc21f9104ca62255631420518, type: 2}
     groundMaterial: {fileID: 2100000, guid: 35545c31c3eb83a45849718f25e28c16, type: 2}
+    multiplierMaterial: {fileID: 2100000, guid: 72fd60cee8e4f95438a33fbeda49065e,
+      type: 2}
+    cloudsMaterial: {fileID: 2100000, guid: 65433f3e1ab724048a1e42e57f3ebc61, type: 2}
+    obstaclesMaterial: {fileID: 2100000, guid: f58318a546893f449b665bbaa8bb8544, type: 2}
+  - name: Cotton Candy
+    fogColor: {r: 1, g: 0.80784315, b: 0.8745098, a: 1}
+    backgroundColor: {r: 1, g: 0.1254902, b: 0.43137255, a: 1}
+    mainMenuBackgroundColor: {r: 1, g: 0.1254902, b: 0.43137255, a: 1}
+    playerMaterial: {fileID: 2100000, guid: f09d42a84917a8d48bcfb8f8980e03a4, type: 2}
+    groundMaterial: {fileID: 2100000, guid: f69861a08ff54f64da2667962c34a2c7, type: 2}
+    multiplierMaterial: {fileID: 2100000, guid: 59805406bc95ce546b4060c3660fb1a8,
+      type: 2}
+    cloudsMaterial: {fileID: 2100000, guid: 6b958044c7df9514592cda69e170a5af, type: 2}
+    obstaclesMaterial: {fileID: 2100000, guid: f45346aa397545047a5fd87ab2aa4312, type: 2}
 --- !u!1 &1635502631
 GameObject:
   m_ObjectHideFlags: 0

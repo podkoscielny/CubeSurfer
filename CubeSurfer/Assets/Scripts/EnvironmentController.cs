@@ -11,6 +11,8 @@ public class EnvironmentController : MonoBehaviour
     [SerializeField] GameObject boxVolume;
     [SerializeField] GameObject dummySun;
     [SerializeField] GameObject flyingLamps;
+    [SerializeField] GameObject pointMultiplier;
+    [SerializeField] GameObject clouds;
 
     [Header("Cameras")]
     [SerializeField] Camera mainCamera;
@@ -26,10 +28,10 @@ public class EnvironmentController : MonoBehaviour
     [SerializeField] AudioClip switchOffAudio;
 
     private Color _ambientLight;
-    private Material _cloudsMaterial;
     private GameManager _gameManager;
     private Animator _environmentAnimator;
     private AudioSource _environmentAudio;
+    private Material _cloudsMaterial;
     private bool _areLightsTurnedOn = false;
     private Color _turnedLightsOffColor = new Color(r: 0, g: 0, b: 0, a: 0);
     private Color _lightBulbsEmissionColor = new Color(r: 1.304f, g: 1.270f, b: 1.086f, a: 1f);
@@ -71,7 +73,6 @@ public class EnvironmentController : MonoBehaviour
     {
         _gameManager = GameManager.Instance;
         _ambientLight = RenderSettings.ambientLight;
-        _cloudsMaterial = GameObject.FindGameObjectWithTag("Clouds").GetComponent<Renderer>().material;
         _environmentAnimator = GetComponent<Animator>();
         _environmentAudio = GetComponent<AudioSource>();
     }
@@ -110,14 +111,31 @@ public class EnvironmentController : MonoBehaviour
             RenderSettings.fogColor = _gameManager.FogColor;
             player.GetComponent<Renderer>().material = _gameManager.PlayerMaterial;
             ground.GetComponent<Renderer>().material = _gameManager.GroundMaterial;
+            pointMultiplier.GetComponent<Renderer>().material = _gameManager.MultiplierMaterial;
+            clouds.GetComponent<Renderer>().material = _gameManager.CloudsMaterial;
         }
         else
         {
-            Material playerMaterial = player.GetComponent<Renderer>().material;
-            Material groundMaterial = ground.GetComponent<Renderer>().material;
-
-            _gameManager.SetTheme(mainCamera.backgroundColor, RenderSettings.fogColor, mainCamera.backgroundColor, groundMaterial, playerMaterial);
+            ThemeColor theme = GetCurrentTheme();
+            _gameManager.SetTheme(theme);
         }
+
+        _cloudsMaterial = clouds.GetComponent<Renderer>().material;
+    }
+
+    ThemeColor GetCurrentTheme()
+    {
+        ThemeColor theme = new ThemeColor();
+
+        theme.backgroundColor = mainCamera.backgroundColor;
+        theme.fogColor = RenderSettings.fogColor;
+        theme.mainMenuBackgroundColor = mainCamera.backgroundColor;
+        theme.groundMaterial = ground.GetComponent<Renderer>().material;
+        theme.playerMaterial = player.GetComponent<Renderer>().material;
+        theme.multiplierMaterial = pointMultiplier.GetComponent<Renderer>().material;
+        theme.cloudsMaterial = clouds.GetComponent<Renderer>().material;
+
+        return theme;
     }
 
     void SetGameOverProperties()

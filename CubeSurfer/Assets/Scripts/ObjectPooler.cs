@@ -20,8 +20,8 @@ public class ObjectPooler : Singleton<ObjectPooler>
         for (int i = 0; i < poolSize; i++)
         {
             GameObject instance = Instantiate(obstaclePrefab);
-            //if (_gameManager.PlayerMaterial != null)
-            //    instance.GetComponent<Renderer>().material = _gameManager.PlayerMaterial;
+            if (_gameManager.ObstaclesMaterial != null)
+                instance.GetComponent<Renderer>().material = _gameManager.ObstaclesMaterial;
 
             AddToPool(instance);
         }
