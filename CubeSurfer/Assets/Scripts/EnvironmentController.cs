@@ -10,7 +10,6 @@ public class EnvironmentController : MonoBehaviour
     [SerializeField] GameObject boxVolume;
     [SerializeField] GameObject dummySun;
     [SerializeField] GameObject flyingLamps;
-    [SerializeField] GameObject clouds;
 
     [Header("Cameras")]
     [SerializeField] Camera mainCamera;
@@ -59,7 +58,7 @@ public class EnvironmentController : MonoBehaviour
     {
         InitializeProperties();
         SetEmissionColor(_turnedLightsOffColor);
-        _cloudsMaterial = clouds.GetComponent<Renderer>().material;
+        _cloudsMaterial = GameObject.FindGameObjectWithTag("Clouds").GetComponent<Renderer>().material;
     }
 
     void Update()
@@ -70,10 +69,10 @@ public class EnvironmentController : MonoBehaviour
     void InitializeProperties()
     {
         _gameManager = GameManager.Instance;
+        _currentTheme = _gameManager.Theme;
         _ambientLight = RenderSettings.ambientLight;
         _environmentAnimator = GetComponent<Animator>();
         _environmentAudio = GetComponent<AudioSource>();
-        _currentTheme = _gameManager.Theme;
     }
 
     void SetBackgroundColors()
