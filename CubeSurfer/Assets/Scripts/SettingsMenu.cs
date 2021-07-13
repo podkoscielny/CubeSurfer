@@ -9,16 +9,15 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] TMP_Dropdown resolutionDropdown;
     [SerializeField] TMP_Dropdown graphicsDropdown;
     [SerializeField] TMP_Dropdown themeDropdown;
+    [SerializeField] List<Theme> themes;
 
     private GameManager _gameManager;
-    private List<Theme> _themes;
     private Resolution[] _resolutions;
     private Camera _mainCamera;
 
     void Start()
     {
         _gameManager = GameManager.Instance;
-        _themes = ThemeManager.Instance.themes;
         _mainCamera = Camera.main;
 
         SetQualityOptions();
@@ -36,12 +35,12 @@ public class SettingsMenu : MonoBehaviour
 
     public void SetTheme(int themeIndex)
     {
-        Theme theme = _themes[themeIndex];
+        Theme theme = themes[themeIndex];
 
         _mainCamera.backgroundColor = theme.backgroundColor;
         cubeRenderer.material = theme.playerMaterial;
 
-        _gameManager.SetTheme(theme);
+        _gameManager.Theme = theme;
     }
 
     private void SetQualityOptions()
@@ -69,12 +68,12 @@ public class SettingsMenu : MonoBehaviour
 
         int currentThemeIndex = 0;
 
-        for (int i = 0; i < _themes.Count; i++)
+        for (int i = 0; i < themes.Count; i++)
         {
-            string themeName = _themes[i].name;
+            string themeName = themes[i].name;
             themeOptions.Add(themeName);
 
-            if (_themes[i].backgroundColor == _gameManager.Theme.backgroundColor)
+            if (themes[i].backgroundColor == _gameManager.Theme.backgroundColor)
                 currentThemeIndex = i;
         }
 

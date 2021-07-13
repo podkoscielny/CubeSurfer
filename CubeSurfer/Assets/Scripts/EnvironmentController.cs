@@ -7,16 +7,13 @@ public class EnvironmentController : MonoBehaviour
     [Header("GameObjects")]
     [SerializeField] GameObject gameOverLamp;
     [SerializeField] GameObject player;
-    [SerializeField] GameObject ground;
     [SerializeField] GameObject boxVolume;
     [SerializeField] GameObject dummySun;
     [SerializeField] GameObject flyingLamps;
-    [SerializeField] GameObject pointMultiplier;
     [SerializeField] GameObject clouds;
 
     [Header("Cameras")]
     [SerializeField] Camera mainCamera;
-    [SerializeField] Camera startCamera;
 
     [Header("Lights")]
     [SerializeField] Material lightBulbsMaterial;
@@ -26,9 +23,6 @@ public class EnvironmentController : MonoBehaviour
     [Header("Audio")]
     [SerializeField] AudioClip switchOnAudio;
     [SerializeField] AudioClip switchOffAudio;
-
-    [Header("Particle System")]
-    [SerializeField] ParticleSystem multiplierParticles;
 
     private Theme _currentTheme;
     private Color _ambientLight;
@@ -64,8 +58,8 @@ public class EnvironmentController : MonoBehaviour
     void Start()
     {
         InitializeProperties();
-        SetThemeColors();
         SetEmissionColor(_turnedLightsOffColor);
+        _cloudsMaterial = clouds.GetComponent<Renderer>().material;
     }
 
     void Update()
@@ -105,22 +99,6 @@ public class EnvironmentController : MonoBehaviour
             _environmentAnimator.SetTrigger("Deactivate");
             _areLightsTurnedOn = false;
         }
-    }
-
-    void SetThemeColors()
-    {
-        mainCamera.backgroundColor = _currentTheme.backgroundColor;
-        startCamera.backgroundColor = _currentTheme.backgroundColor;
-        RenderSettings.fogColor = _currentTheme.fogColor;
-        player.GetComponent<Renderer>().material = _currentTheme.playerMaterial;
-        ground.GetComponent<Renderer>().material = _currentTheme.groundMaterial;
-        pointMultiplier.GetComponent<Renderer>().material = _currentTheme.multiplierMaterial;
-        clouds.GetComponent<Renderer>().material = _currentTheme.cloudsMaterial;
-
-        ParticleSystem.MainModule settings = multiplierParticles.main;
-        settings.startColor = _currentTheme.multiplierMaterial.color;
-
-        _cloudsMaterial = clouds.GetComponent<Renderer>().material;
     }
 
     void SetGameOverProperties()

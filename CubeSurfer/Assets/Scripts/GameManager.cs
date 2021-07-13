@@ -6,7 +6,7 @@ using TMPro;
 public class GameManager : Singleton<GameManager>
 {
     //Theme properties
-    public Theme Theme { get; private set; }
+    public Theme Theme;
 
     //Game state
     public bool IsGameOver { get; private set; } = false;
@@ -50,18 +50,12 @@ public class GameManager : Singleton<GameManager>
     }
     #endregion
 
-    private void Start()
-    {
-        SaveSystem.Load();
-        Theme = ThemeManager.Instance.themes[0];
-    }
+    private void Start() => SaveSystem.Load();
 
     private void Update()
     {
         if (HasGameStarted && !IsGameOver && _scoreText != null) UpdateScore();
     }
-
-    public void SetTheme(Theme theme) => Theme = theme;
 
     public void ResetGame()
     {
