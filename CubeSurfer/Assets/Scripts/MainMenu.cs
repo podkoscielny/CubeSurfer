@@ -6,7 +6,7 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] Renderer cubeRenderer;
 
-    private ThemeColor _currentTheme;
+    private Theme _currentTheme;
     private Camera _mainCamera;
 
     void Start()

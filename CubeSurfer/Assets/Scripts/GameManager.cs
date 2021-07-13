@@ -6,7 +6,7 @@ using TMPro;
 public class GameManager : Singleton<GameManager>
 {
     //Theme properties
-    public ThemeColor Theme { get; private set; }
+    public Theme Theme { get; private set; }
 
     //Game state
     public bool IsGameOver { get; private set; } = false;
@@ -61,7 +61,7 @@ public class GameManager : Singleton<GameManager>
         if (HasGameStarted && !IsGameOver && _scoreText != null) UpdateScore();
     }
 
-    public void SetTheme(ThemeColor theme) => Theme = theme;
+    public void SetTheme(Theme theme) => Theme = theme;
 
     public void ResetGame()
     {

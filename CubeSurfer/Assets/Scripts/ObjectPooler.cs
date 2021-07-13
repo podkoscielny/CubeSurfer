@@ -9,7 +9,7 @@ public class ObjectPooler : Singleton<ObjectPooler>
 
     private Queue<GameObject> _obstaclesPool;
 
-    private ThemeColor _currentTheme;
+    private Theme _currentTheme;
 
     void Start()
     {

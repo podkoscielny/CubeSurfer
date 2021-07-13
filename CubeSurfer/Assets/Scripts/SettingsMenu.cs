@@ -11,7 +11,7 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] TMP_Dropdown themeDropdown;
 
     private GameManager _gameManager;
-    private List<ThemeColor> _themes;
+    private List<Theme> _themes;
     private Resolution[] _resolutions;
     private Camera _mainCamera;
 
@@ -36,7 +36,7 @@ public class SettingsMenu : MonoBehaviour
 
     public void SetTheme(int themeIndex)
     {
-        ThemeColor theme = _themes[themeIndex];
+        Theme theme = _themes[themeIndex];
 
         _mainCamera.backgroundColor = theme.backgroundColor;
         cubeRenderer.material = theme.playerMaterial;

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2435a3aa9d2c834ab4822e9300d4d1d, type: 3}
+  m_Name: Cotton Candy
+  m_EditorClassIdentifier: 
+  name: Cotton Candy
+  fogColor: {r: 1, g: 0.80784315, b: 0.8745098, a: 1}
+  backgroundColor: {r: 1, g: 0.1254902, b: 0.43137255, a: 1}
+  playerMaterial: {fileID: 2100000, guid: f09d42a84917a8d48bcfb8f8980e03a4, type: 2}
+  groundMaterial: {fileID: 2100000, guid: f69861a08ff54f64da2667962c34a2c7, type: 2}
+  multiplierMaterial: {fileID: 2100000, guid: 59805406bc95ce546b4060c3660fb1a8, type: 2}
+  cloudsMaterial: {fileID: 2100000, guid: 6b958044c7df9514592cda69e170a5af, type: 2}
+  obstaclesMaterial: {fileID: 2100000, guid: f45346aa397545047a5fd87ab2aa4312, type: 2}

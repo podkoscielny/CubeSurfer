@@ -30,7 +30,7 @@ public class EnvironmentController : MonoBehaviour
     [Header("Particle System")]
     [SerializeField] ParticleSystem multiplierParticles;
 
-    private ThemeColor _currentTheme;
+    private Theme _currentTheme;
     private Color _ambientLight;
     private GameManager _gameManager;
     private Animator _environmentAnimator;

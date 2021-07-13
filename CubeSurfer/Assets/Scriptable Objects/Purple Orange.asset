@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2435a3aa9d2c834ab4822e9300d4d1d, type: 3}
+  m_Name: Purple Orange
+  m_EditorClassIdentifier: 
+  name: Purple Orange
+  fogColor: {r: 0.99215686, g: 0.99215686, b: 0.99215686, a: 1}
+  backgroundColor: {r: 0.45882353, g: 0.54509807, b: 0.99215686, a: 1}
+  playerMaterial: {fileID: 2100000, guid: d084d55cc21f9104ca62255631420518, type: 2}
+  groundMaterial: {fileID: 2100000, guid: 35545c31c3eb83a45849718f25e28c16, type: 2}
+  multiplierMaterial: {fileID: 2100000, guid: 72fd60cee8e4f95438a33fbeda49065e, type: 2}
+  cloudsMaterial: {fileID: 2100000, guid: 65433f3e1ab724048a1e42e57f3ebc61, type: 2}
+  obstaclesMaterial: {fileID: 2100000, guid: f58318a546893f449b665bbaa8bb8544, type: 2}
