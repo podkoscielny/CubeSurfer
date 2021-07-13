@@ -19,11 +19,9 @@ public class ButtonHoverColor : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     void OnDisable() => SetBaseColor();
 
-    public void OnPointerEnter(PointerEventData eventData) => SetHoverColor();
+    public void OnPointerEnter(PointerEventData eventData) => _buttonText.color = _gameManager.Theme.backgroundColor;
 
     public void OnPointerExit(PointerEventData eventData) => SetBaseColor();
 
     private void SetBaseColor() => _buttonText.color = _baseColor;
-
-    private void SetHoverColor() => _buttonText.color = _gameManager.Theme.backgroundColor;
 }
