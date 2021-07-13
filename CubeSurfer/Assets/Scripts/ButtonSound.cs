@@ -9,10 +9,7 @@ public class ButtonSound : MonoBehaviour, IPointerEnterHandler, IPointerClickHan
 
     private AudioSource _hoverAudio;
 
-    void Start()
-    {
-        _hoverAudio = GetComponent<AudioSource>();
-    }
+    void Start() => _hoverAudio = GetComponent<AudioSource>();
 
     public void OnPointerEnter(PointerEventData eventData) => _hoverAudio.PlayOneShot(hoverSound);
 

@@ -21,9 +21,7 @@ public class CameraFollow : MonoBehaviour
     void FollowPlayersPosition()
     {
         _gameplayOffset.x = player.position.x;
-        Vector3 desiredPosition = _gameplayOffset;
-
-        if (_gameManager.IsGameOver) desiredPosition = player.position + _gameoverOffset;
+        Vector3 desiredPosition = !_gameManager.IsGameOver ? _gameplayOffset : player.position + _gameoverOffset;
 
         transform.position = Vector3.SmoothDamp(transform.position, desiredPosition, ref _velocity, SMOOTH_TIME);
         transform.LookAt(fog);
