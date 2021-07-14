@@ -8,13 +8,16 @@ public class ObjectPooler : Singleton<ObjectPooler>
     [SerializeField] int poolSize;
 
     private Queue<GameObject> _obstaclesPool;
-
     private Theme _currentTheme;
 
     void Start()
     {
         _currentTheme = GameManager.Instance.Theme;
+        InitializePool();       
+    }
 
+    private void InitializePool()
+    {
         _obstaclesPool = new Queue<GameObject>();
 
         for (int i = 0; i < poolSize; i++)
