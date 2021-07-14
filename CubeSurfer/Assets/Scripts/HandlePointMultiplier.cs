@@ -1,33 +1,42 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class HandlePointMultiplier : MonoBehaviour
 {
-    [Header("Audio")]
     [SerializeField] AudioClip pickedMultiplierSound;
+    [SerializeField] GameObject pointMultiplierText;
+    [SerializeField] GameObject multiplierIndicator;
+
     private AudioSource _playerAudio;
+    private GameManager _gameManager;
+    private bool _isMultiplierActive = false;
+
     private const float SOUND_VOLUME = 1f;
+    private const float MULTIPLIER_DURATION = 10f;
 
-    [Header("Unity Events")]
-    [SerializeField] UnityEvent OnEnableMultiplier;
-    [SerializeField] UnityEvent OnDisableMultiplier;
-
-    private const float multiplierDuration = 10f;
-
-    void Start() => _playerAudio = GetComponent<AudioSource>();
-
-    private void DisableMultiplier() => OnDisableMultiplier.Invoke();
+    void Start()
+    {
+        _playerAudio = GetComponent<AudioSource>();
+        _gameManager = GameManager.Instance;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("PointMultiplier"))
         {
-            OnEnableMultiplier.Invoke();
+            SwitchMultiplier();
             _playerAudio.PlayOneShot(pickedMultiplierSound, SOUND_VOLUME);
             other.gameObject.SetActive(false);
-            Invoke(nameof(DisableMultiplier), multiplierDuration);
+            Invoke(nameof(SwitchMultiplier), MULTIPLIER_DURATION);
         }
+    }
+
+    void SwitchMultiplier()
+    {
+        _isMultiplierActive = !_isMultiplierActive;
+        pointMultiplierText.SetActive(_isMultiplierActive);
+        multiplierIndicator.SetActive(_isMultiplierActive);
+        _gameManager.ScoreMultiplier = _isMultiplierActive ? 2 : 1;
     }
 }
