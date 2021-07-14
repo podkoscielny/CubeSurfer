@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 1, g: 1, b: 1, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 56113b3b655ab7349bab4d7d405c258a, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 86ef303af8def1641ae0a47404facd3f, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.118061766, g: 0.62293464, b: 0.99999905, a: 1}
+  m_IndirectSpecularColor: {r: 0.21118766, g: 0.84972006, b: 0.99613047, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -645,12 +645,6 @@ MonoBehaviour:
   hoverSound: {fileID: 8300000, guid: ce15123fd00b9e145b25f5702170df98, type: 3}
   clickSound: {fileID: 8300000, guid: a3ef02c39dd994f5993dc5f9fec0e524, type: 3}
   clickAudio: {fileID: 948300019}
---- !u!1 &78885264 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a0726b24b7ebe1741923d9797370a623,
-    type: 3}
-  m_PrefabInstance: {fileID: 865419442}
-  m_PrefabAsset: {fileID: 0}
 --- !u!23 &78885265 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: a0726b24b7ebe1741923d9797370a623,
@@ -7923,7 +7917,6 @@ MonoBehaviour:
   boxVolume: {fileID: 433918861}
   dummySun: {fileID: 997320982}
   flyingLamps: {fileID: 1703266568}
-  clouds: {fileID: 78885264}
   mainCamera: {fileID: 963194227}
   lightBulbsMaterial: {fileID: 2100000, guid: 8811451e67a70c84cace4b386b2995b2, type: 2}
   ledStripsMaterial: {fileID: 2100000, guid: 9a05acf8cb433e24f8955c673cf32dae, type: 2}
