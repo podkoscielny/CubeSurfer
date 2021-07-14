@@ -8,15 +8,13 @@ public class HighscoreList : MonoBehaviour
     [SerializeField] TextMeshProUGUI noHighscoresText;
     [SerializeField] List<TextMeshProUGUI> highscoresList;
 
-    private GameManager _gameManager;
+    void Start() => DisplayHighscoreList();
 
-    void Start()
+    void DisplayHighscoreList()
     {
-        _gameManager = GameManager.Instance;
+        List<Highscore> highscores = GameManager.Instance.Highscores;
 
-        List<Highscore> highscores = _gameManager.Highscores;
-
-        if(highscores.Count == 0)
+        if (highscores.Count == 0)
         {
             noHighscoresText.gameObject.SetActive(true);
         }
