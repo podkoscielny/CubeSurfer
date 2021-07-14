@@ -2209,6 +2209,7 @@ MonoBehaviour:
   lightsMaterial: {fileID: 2100000, guid: 8811451e67a70c84cace4b386b2995b2, type: 2}
   switchOnAudio: {fileID: 8300000, guid: 3fc20dec8f9fb93429a27bd9742720bb, type: 3}
   switchOffAudio: {fileID: 8300000, guid: b9e7df429e884ce4683dc48861c0c83b, type: 3}
+  lightsAudio: {fileID: 1703266571}
 --- !u!1 &304914175
 GameObject:
   m_ObjectHideFlags: 0

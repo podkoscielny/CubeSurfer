@@ -11,17 +11,14 @@ public class SwitchLights : MonoBehaviour
     [Header("Audio")]
     [SerializeField] AudioClip switchOnAudio;
     [SerializeField] AudioClip switchOffAudio;
+    [SerializeField] AudioSource lightsAudio;
 
-    private AudioSource _lightsAudio;
     private Color _turnedLightsOffColor = new Color(r: 0, g: 0, b: 0, a: 0);
     private Color _lightBulbsEmissionColor = new Color(r: 1.304f, g: 1.270f, b: 1.086f, a: 1f);
     private Color _ledStripsEmissionColor = new Color(r: 1.662f, g: 1.662f, b: 1.662f, a: 1f);
 
     private const float SWITCH_ON_PITCH = 1.8f;
     private const float SWITCH_OFF_PITCH = 0.8f;
-
-    private void Awake() => 
-        _lightsAudio = GameObject.FindGameObjectWithTag("FlyingLamps").GetComponent<AudioSource>();
 
     void OnEnable() => 
         SwitchLamps(_lightBulbsEmissionColor, _ledStripsEmissionColor, SWITCH_ON_PITCH, switchOnAudio);
@@ -34,7 +31,7 @@ public class SwitchLights : MonoBehaviour
         lightsMaterial.SetColor("_EmissionColor", lampsColor);
         ledsMaterial.SetColor("_EmissionColor", ledsColor);
 
-        _lightsAudio.pitch = pitch;
-        _lightsAudio.PlayOneShot(switchingAudio);
+        lightsAudio.pitch = pitch;
+        lightsAudio.PlayOneShot(switchingAudio);
     }
 }
