@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class MenuCubeController : MonoBehaviour
 {
-    private Camera mainCamera;
-
-    void Start() => mainCamera = Camera.main;
+    [SerializeField] Camera mainCamera;
 
     void Update() => FollowMousePosition();
 
