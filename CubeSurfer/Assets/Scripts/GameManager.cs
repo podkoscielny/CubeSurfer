@@ -76,6 +76,8 @@ public class GameManager : Singleton<GameManager>
 
     private void StartGame() => HasGameStarted = true;
 
+    private void LevelUp() => _levelText.text = $"Level: {++Level}";
+
     private void GameOver()
     {
         IsGameOver = true;
@@ -114,11 +116,5 @@ public class GameManager : Singleton<GameManager>
         _score += CurrentSpeed / SCORE_DIVIDER * Time.deltaTime * ScoreMultiplier;
         int roundScore = (int)_score;
         _scoreText.text = roundScore.ToString();
-    }
-
-    private void LevelUp()
-    {
-        Level++;
-        _levelText.text = $"Level: {Level}";
     }
 }
