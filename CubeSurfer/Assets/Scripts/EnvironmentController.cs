@@ -56,23 +56,20 @@ public class EnvironmentController : MonoBehaviour
 
     void Start()
     {
-        InitializeProperties();
-        SetEmissionColor(_turnedLightsOffColor);
-        _cloudsMaterial = GameObject.FindGameObjectWithTag("Clouds").GetComponent<Renderer>().material;
-    }
-
-    void Update()
-    {
-        if (_gameManager.HasGameStarted) SetBackgroundColors();
-    }
-
-    void InitializeProperties()
-    {
         _gameManager = GameManager.Instance;
         _currentTheme = _gameManager.Theme;
         _ambientLight = RenderSettings.ambientLight;
         _environmentAnimator = GetComponent<Animator>();
         _environmentAudio = GetComponent<AudioSource>();
+        _cloudsMaterial = GameObject.FindGameObjectWithTag("Clouds").GetComponent<Renderer>().material;
+
+        lightBulbsMaterial.SetColor("_EmissionColor", _turnedLightsOffColor);
+        ledStripsMaterial.SetColor("_EmissionColor", _turnedLightsOffColor);
+    }
+
+    void Update()
+    {
+        if (_gameManager.HasGameStarted) SetBackgroundColors();
     }
 
     void SetBackgroundColors()
@@ -109,41 +106,21 @@ public class EnvironmentController : MonoBehaviour
 
     void EnableFlyingLamps() => flyingLamps.SetActive(true);
 
-    void TurnLightsOn()
-    {
-        SetEmissionColor(_lightBulbsEmissionColor, _ledStripsEmissionColor);
+    void TurnLightsOn() => SwitchLights(_lightBulbsEmissionColor, _ledStripsEmissionColor, LIGHTS_INTENSITY, SWITCH_ON_PITCH, switchOnAudio);
 
-        for (int i = 0; i < lights.Length; i++)
-        {
-            lights[i].intensity = LIGHTS_INTENSITY;
-        }
+    void TurnLightsOff() => SwitchLights(_turnedLightsOffColor, _turnedLightsOffColor, 0, SWITCH_OFF_PITCH, switchOffAudio);
 
-        _environmentAudio.pitch = SWITCH_ON_PITCH;
-        _environmentAudio.PlayOneShot(switchOnAudio);
-    }
-
-    void TurnLightsOff()
-    {
-        SetEmissionColor(_turnedLightsOffColor);
-
-        for (int i = 0; i < lights.Length; i++)
-        {
-            lights[i].intensity = 0;
-        }
-
-        _environmentAudio.pitch = SWITCH_OFF_PITCH;
-        _environmentAudio.PlayOneShot(switchOffAudio);
-    }
-
-    void SetEmissionColor(Color lampsColor, Color ledsColor)
+    void SwitchLights(Color lampsColor, Color ledsColor, float lightsIntensity, float pitch, AudioClip switchingAudio)
     {
         lightBulbsMaterial.SetColor("_EmissionColor", lampsColor);
         ledStripsMaterial.SetColor("_EmissionColor", ledsColor);
-    }
 
-    void SetEmissionColor(Color color)
-    {
-        lightBulbsMaterial.SetColor("_EmissionColor", color);
-        ledStripsMaterial.SetColor("_EmissionColor", color);
+        for (int i = 0; i < lights.Length; i++)
+        {
+            lights[i].intensity = lightsIntensity;
+        }
+
+        _environmentAudio.pitch = pitch;
+        _environmentAudio.PlayOneShot(switchingAudio);
     }
 }
