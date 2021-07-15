@@ -121,18 +121,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &1300103 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5147569742666132463, guid: fcd01287e318c304f84e6106b3a77f15,
-    type: 3}
-  m_PrefabInstance: {fileID: 5147569742667201896}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc734dad2960e914ca727b3a701ab25f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &26881201
 GameObject:
   m_ObjectHideFlags: 0
@@ -10690,78 +10678,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickedMultiplierSound: {fileID: 8300000, guid: 7bd6b897eb5ca4b7d88a205c4a51640c,
     type: 3}
-  OnEnableMultiplier:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 972164717}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1300103}
-        m_MethodName: set_ScoreMultiplier
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 304914175}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  OnDisableMultiplier:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 972164717}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1300103}
-        m_MethodName: set_ScoreMultiplier
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 304914175}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   pointMultiplierText: {fileID: 972164717}
   multiplierIndicator: {fileID: 304914175}
 --- !u!1 &1274201167
@@ -11794,6 +11710,8 @@ MonoBehaviour:
   - {fileID: 9220663544015669168, guid: 57df094fb9fa72a4e8ccbbdee0799a30, type: 3}
   - {fileID: 9220663544015669168, guid: 19a097ee63198344ea337b824b31a422, type: 3}
   - {fileID: 9220663544015669168, guid: 4f87e03c885f5254e85215564d6168ca, type: 3}
+  - {fileID: 9220663544015669168, guid: 64f1d3f248585e44ba74362659a6f712, type: 3}
+  - {fileID: 9220663544015669168, guid: c4c2eebb9890fac4496ca20280f08992, type: 3}
 --- !u!1001 &1446295683
 PrefabInstance:
   m_ObjectHideFlags: 0
