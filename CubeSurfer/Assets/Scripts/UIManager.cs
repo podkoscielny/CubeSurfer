@@ -19,9 +19,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject newHighscoreText;
     [SerializeField] GameObject gameOverPanel;
 
-
     private GameManager _gameManager;
-
     private bool _isGamePaused = false;
     private const float SHOW_POPUP_DELAY = 3.5f;
     private const float TURNED_DOWN_VOLUME = 0.03f;
@@ -89,8 +87,7 @@ public class UIManager : MonoBehaviour
             playButton.SetActive(true);
             pauseButton.SetActive(false);
         }
-    }
-
+    } 
 
     private void ShowGameOverPanel() => StartCoroutine(DelayShowingPanel());
 

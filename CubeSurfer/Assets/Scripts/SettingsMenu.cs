@@ -84,9 +84,9 @@ public class SettingsMenu : MonoBehaviour
 
     private void SetResolutionOptions()
     {
-        _resolutions = Screen.resolutions;
-
         resolutionDropdown.ClearOptions();
+
+        _resolutions = Screen.resolutions;
 
         List<string> resolutionOptions = new List<string>();
 
