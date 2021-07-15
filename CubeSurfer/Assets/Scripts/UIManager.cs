@@ -61,33 +61,23 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void ResumeGame()
+    public void ResumeGame() => HandlePausing(false, 1f, REGULAR_VOLUME);
+
+    public void PauseGame() => HandlePausing(true, 0, TURNED_DOWN_VOLUME); 
+
+    void HandlePausing(bool isPaused, float timeScale, float volume)
     {
         if (!_gameManager.IsGameOver)
         {
-            _isGamePaused = false;
-            Time.timeScale = 1f;
-            backgroundMusic.volume = REGULAR_VOLUME;
+            _isGamePaused = isPaused;
+            Time.timeScale = timeScale;
+            backgroundMusic.volume = volume;
 
-            pausePopUp.SetActive(false);
-            playButton.SetActive(false);
-            pauseButton.SetActive(true);
+            pausePopUp.SetActive(isPaused);
+            playButton.SetActive(isPaused);
+            pauseButton.SetActive(!isPaused);
         }
     }
-
-    public void PauseGame()
-    {
-        if (!_gameManager.IsGameOver)
-        {
-            _isGamePaused = true;
-            Time.timeScale = 0f;
-            backgroundMusic.volume = TURNED_DOWN_VOLUME;
-
-            pausePopUp.SetActive(true);
-            playButton.SetActive(true);
-            pauseButton.SetActive(false);
-        }
-    } 
 
     private void ShowGameOverPanel() => StartCoroutine(DelayShowingPanel());
 
