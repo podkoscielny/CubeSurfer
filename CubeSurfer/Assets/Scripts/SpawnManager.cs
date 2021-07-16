@@ -10,7 +10,7 @@ public class SpawnManager : MonoBehaviour
 
     private GameManager _gameManager;
     private ObjectPooler _objectPooler;
-    private int _currentWaveIndex = 0;
+    [SerializeField] int _currentWaveIndex = 0;
     private float _speedMultiplier = 1f;
     private const float INCREASE_MULTIPLIER_BY = 0.5f;
 

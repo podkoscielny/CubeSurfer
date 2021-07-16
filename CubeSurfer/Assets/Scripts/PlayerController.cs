@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
         if (Time.timeScale > 0)
         {
-            if (Input.GetKeyDown(KeyCode.Space) && !_isChangingLane)
+            if (Input.GetButtonDown("Jump") && !_isChangingLane)
             {
                 Jump();
             }

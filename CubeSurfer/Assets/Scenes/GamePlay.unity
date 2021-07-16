@@ -11712,6 +11712,10 @@ MonoBehaviour:
   - {fileID: 9220663544015669168, guid: 4f87e03c885f5254e85215564d6168ca, type: 3}
   - {fileID: 9220663544015669168, guid: 64f1d3f248585e44ba74362659a6f712, type: 3}
   - {fileID: 9220663544015669168, guid: c4c2eebb9890fac4496ca20280f08992, type: 3}
+  - {fileID: 9220663544015669168, guid: 11dfa90b05ac67e408297d02e30a29aa, type: 3}
+  - {fileID: 9220663544015669168, guid: cf977e865dae4ef45877502135aa2de2, type: 3}
+  - {fileID: 9220663544015669168, guid: c035fa34dd81486409c72791e1b644d4, type: 3}
+  _currentWaveIndex: 7
 --- !u!1001 &1446295683
 PrefabInstance:
   m_ObjectHideFlags: 0
