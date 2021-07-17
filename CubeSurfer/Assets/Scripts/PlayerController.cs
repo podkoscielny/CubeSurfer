@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Side { Left, Mid, Right }
+public enum Side { Left, Mid, Right, MidLeft, MidRight }
 
 public class PlayerController : MonoBehaviour
 {
@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
         if (Time.timeScale > 0)
         {
-            if (Input.GetButtonDown("Jump") && !_isChangingLane)
+            if (Input.GetButtonDown("Jump"))
             {
                 Jump();
             }
@@ -64,6 +64,21 @@ public class PlayerController : MonoBehaviour
         _playerRb.AddTorque(Vector3.right * TORQUE_FORCE, ForceMode.Impulse);
         _isOnGround = false;
 
+        if(_isChangingLane)
+        {
+            ResetHorizontalVelocity();
+            _isChangingLane = false;
+
+            if((_isSlidingLeft && _currentSide == Side.Mid) ||(!_isSlidingLeft && _currentSide == Side.Right))
+            {
+                _currentSide = Side.MidRight;
+            }
+            else if((_isSlidingLeft && _currentSide == Side.Left) || (!_isSlidingLeft && _currentSide == Side.Mid))
+            {
+                _currentSide = Side.MidLeft;
+            }
+        }
+
         _playerAudio.PlayOneShot(jumpSound, SOUND_VOLUME);
     }
 
@@ -71,7 +86,7 @@ public class PlayerController : MonoBehaviour
     {
         bool isMovingLeft = slideDirection == Vector3.left;
 
-        _playerRb.velocity = new Vector3(0, _playerRb.velocity.y, _playerRb.velocity.z); // Reset velocity on x-axis to smoothly change directions
+        ResetHorizontalVelocity(); // Reset velocity on x-axis to smoothly change directions
         _playerRb.AddForce(slideDirection * SLIDE_FORCE, ForceMode.VelocityChange);
 
         _isChangingLane = true;
@@ -82,6 +97,16 @@ public class PlayerController : MonoBehaviour
         {
             _currentSide = Side.Mid;
             _currentLaneBound = 0;
+        }
+        else if(_currentSide == Side.MidLeft)
+        {
+            _currentSide = isMovingLeft ? Side.Left : Side.Mid;
+            _currentLaneBound = isMovingLeft ? -LANE_BOUND : 0;
+        }
+        else if(_currentSide == Side.MidRight)
+        {
+            _currentSide = isMovingLeft ? Side.Mid : Side.Right;
+            _currentLaneBound = isMovingLeft ? 0 : LANE_BOUND;
         }
         else
         {
@@ -96,10 +121,12 @@ public class PlayerController : MonoBehaviour
     {
         if ((_isSlidingLeft && transform.position.x <= _currentLaneBound) || (!_isSlidingLeft && transform.position.x >= _currentLaneBound)) // Reset velocity when reaches the intended lane
         {
-            _playerRb.velocity = new Vector3(0, _playerRb.velocity.y, _playerRb.velocity.z);
+            ResetHorizontalVelocity();
             _isChangingLane = false;
         }
     }
+
+    void ResetHorizontalVelocity() => _playerRb.velocity = new Vector3(0, _playerRb.velocity.y, _playerRb.velocity.z);
 
     void OnCollisionEnter(Collision collision)
     {
