@@ -64,16 +64,16 @@ public class PlayerController : MonoBehaviour
         _playerRb.AddTorque(Vector3.right * TORQUE_FORCE, ForceMode.Impulse);
         _isOnGround = false;
 
-        if(_isChangingLane)
+        if (_isChangingLane) // Stop changing lane
         {
             ResetHorizontalVelocity();
             _isChangingLane = false;
 
-            if((_isSlidingLeft && _currentSide == Side.Mid) ||(!_isSlidingLeft && _currentSide == Side.Right))
+            if ((_isSlidingLeft && _currentSide == Side.Mid) || (!_isSlidingLeft && _currentSide == Side.Right))
             {
                 _currentSide = Side.MidRight;
             }
-            else if((_isSlidingLeft && _currentSide == Side.Left) || (!_isSlidingLeft && _currentSide == Side.Mid))
+            else if ((_isSlidingLeft && _currentSide == Side.Left) || (!_isSlidingLeft && _currentSide == Side.Mid))
             {
                 _currentSide = Side.MidLeft;
             }
@@ -98,12 +98,12 @@ public class PlayerController : MonoBehaviour
             _currentSide = Side.Mid;
             _currentLaneBound = 0;
         }
-        else if(_currentSide == Side.MidLeft)
+        else if (_currentSide == Side.MidLeft)
         {
             _currentSide = isMovingLeft ? Side.Left : Side.Mid;
             _currentLaneBound = isMovingLeft ? -LANE_BOUND : 0;
         }
-        else if(_currentSide == Side.MidRight)
+        else if (_currentSide == Side.MidRight)
         {
             _currentSide = isMovingLeft ? Side.Mid : Side.Right;
             _currentLaneBound = isMovingLeft ? 0 : LANE_BOUND;
