@@ -6,6 +6,8 @@ public class MoveTowardPlayer : MonoBehaviour
 {
     private GameManager _gameManager;
 
+    void OnDisable() => GetComponent<MovingObstacle>().enabled = false;
+
     void Start() => _gameManager = GameManager.Instance;
 
     void Update()

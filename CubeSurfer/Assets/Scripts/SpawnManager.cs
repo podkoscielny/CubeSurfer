@@ -63,6 +63,15 @@ public class SpawnManager : MonoBehaviour
         {
             GameObject obstacle = _objectPooler.GetFromPool();
             obstacle.transform.SetTransformation(child);
+
+            MovingObstacle childScript = child.gameObject.GetComponent<MovingObstacle>();
+
+            if (childScript != null && childScript.enabled)
+            {
+                MovingObstacle obstacleScript = obstacle.GetComponent<MovingObstacle>();
+                obstacleScript.enabled = true;
+                obstacleScript.SetProperties(childScript);
+            }
         }
     }
 
