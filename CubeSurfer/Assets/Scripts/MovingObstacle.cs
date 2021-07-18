@@ -30,6 +30,8 @@ public class MovingObstacle : MonoBehaviour
         }
     }
 
+    void OnDisable() => this.enabled = false;
+
     void Update() => moveFunction();
 
     void MoveObstacleInX() => transform.position = new Vector3(Mathf.PingPong(Time.time * obstacleSpeed, maxValue) + minValue, transform.position.y, transform.position.z);
