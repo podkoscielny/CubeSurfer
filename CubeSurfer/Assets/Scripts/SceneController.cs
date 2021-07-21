@@ -13,29 +13,20 @@ public class SceneController : MonoBehaviour
 
     private const float TRANSITION_TIME = 1f;
     private GameManager _gameManager;
-    
 
-    private void Start() => _gameManager = GameManager.Instance;
+    private void Start()
+    {
+        _gameManager = GameManager.Instance;
+        _gameManager.ResetGame();
+    }
 
     public void StartGame() => StartCoroutine(LoadScene("GamePlay"));
 
-    public void QuitGame()
-    {
-        _gameManager.ResetGame();
-        Application.Quit();
-    }
+    public void QuitGame() => Application.Quit();
 
-    public void RestartGame()
-    {
-        _gameManager.ResetGame();
-        StartCoroutine(LoadScene(SceneManager.GetActiveScene().name));
-    }
+    public void RestartGame() => StartCoroutine(LoadScene(SceneManager.GetActiveScene().name));
 
-    public void GoToMenu()
-    {
-        _gameManager.ResetGame();
-        StartCoroutine(LoadScene("MainMenu"));
-    }
+    public void GoToMenu() => StartCoroutine(LoadScene("MainMenu"));
 
     IEnumerator LoadScene(string sceneName)
     {
