@@ -11,8 +11,9 @@ public class SpawnManager : MonoBehaviour
     private GameManager _gameManager;
     private ObjectPooler _objectPooler;
     [SerializeField] int _currentWaveIndex = 0;
-    private float _speedMultiplier = 1f;
-    private const float INCREASE_MULTIPLIER_BY = 0.5f;
+    private float _speedAddition = 0f;
+    private const float INCREASE_ADDITION_BY = 2f;
+    private const float MAX_SPEED = 34f;
 
     private void Start()
     {
@@ -41,7 +42,7 @@ public class SpawnManager : MonoBehaviour
         GameObject waveToSpawn = wavePrefabs[_currentWaveIndex];
         WaveController waveController = waveToSpawn.GetComponent<WaveController>();
 
-        _gameManager.CurrentSpeed = waveController.speed * _speedMultiplier;
+        _gameManager.CurrentSpeed = waveController.speed + _speedAddition > MAX_SPEED ? MAX_SPEED : waveController.speed + _speedAddition;
 
         InstantiateObstacles(waveToSpawn);
         if (waveController.hasMultiplier)
@@ -52,7 +53,7 @@ public class SpawnManager : MonoBehaviour
         if (_currentWaveIndex == wavePrefabs.Length)
         {
             _currentWaveIndex = 0;
-            _speedMultiplier += INCREASE_MULTIPLIER_BY;
+            _speedAddition += INCREASE_ADDITION_BY;
         }
     }
 

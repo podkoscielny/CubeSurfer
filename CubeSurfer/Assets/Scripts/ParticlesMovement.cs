@@ -35,7 +35,11 @@ public class ParticlesMovement : MonoBehaviour
         if (CompareTag("GroundParticles")) SetParticlesColor();  //Set particles color based on theme currently selected
     }
 
-    void StartParticleMovement() => _particles.Play();
+    void StartParticleMovement()
+    {
+        _particles.Play();
+        SpeedUpParticleMovement();
+    }
 
     void StopParticleMovement() => _particles.Pause();
 
