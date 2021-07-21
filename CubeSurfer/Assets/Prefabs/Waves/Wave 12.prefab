@@ -4899,7 +4899,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9220663544015669171
 Transform:
   m_ObjectHideFlags: 0
@@ -4975,8 +4975,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
-  hasMultiplier: 0
-  multipliersPositon: {x: 0, y: 0, z: 0}
+  hasMultiplier: 1
+  multipliersPositon: {x: 0.77, y: 2.6, z: 794.52}
 --- !u!1 &9220663544177896367
 GameObject:
   m_ObjectHideFlags: 0

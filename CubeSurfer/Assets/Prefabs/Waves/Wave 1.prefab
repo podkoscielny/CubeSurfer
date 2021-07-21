@@ -1159,7 +1159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 22
-  hasMultiplier: 1
+  hasMultiplier: 0
   multipliersPositon: {x: 0, y: 1.57, z: 323.6}
 --- !u!1 &9220663544177896367
 GameObject:
