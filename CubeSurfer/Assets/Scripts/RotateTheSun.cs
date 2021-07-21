@@ -6,7 +6,7 @@ public class RotateTheSun : MonoBehaviour
 {
     [SerializeField] GameObject dummySun;
 
-    private const float ROTATION_SPEED = 10f;
+    private const float ROTATION_SPEED = 0.5f;
 
     void Update()
     {
