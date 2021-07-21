@@ -20,6 +20,8 @@ public class MovingObstacle : MonoBehaviour
 
     void Start()
     {
+        maxValue -= minValue;
+
         if(axis == 0)
         {
             moveFunction = MoveObstacleInX;
