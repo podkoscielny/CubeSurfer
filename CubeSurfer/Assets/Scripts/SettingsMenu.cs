@@ -96,7 +96,7 @@ public class SettingsMenu : MonoBehaviour
             string option = $"{_resolutions[i].width} x {_resolutions[i].height} {_resolutions[i].refreshRate} Hz";
             resolutionOptions.Add(option);
 
-            if (_resolutions[i].width == Screen.currentResolution.width && _resolutions[i].height == Screen.currentResolution.height)
+            if (_resolutions[i].width == Screen.width && _resolutions[i].height == Screen.height)
             {
                 currentResolutionIndex = i;
             }
