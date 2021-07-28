@@ -10,3 +10,11 @@ CubeSurfer is a made with Unity arcade 3D game. Control the Cube and improve you
 * **Pause game** - <kbd>P</kbd>
 
 ## Gallery
+<p float="left">
+  <img src="Screenshots/Screenshot-menu.png" width="400" />
+  <img src="Screenshots/Screenshot-game-start.png" width="400" /> 
+  <img src="Screenshots/Screenshot-speedup.png" width="400" />
+  <img src="Screenshots/Screenshot-jump2.png" width="400" />
+  <img src="Screenshots/Screenshot-move2.png" width="400" />
+  <img src="Screenshots/Screenshot-multiplier2.png" width="400" />
+</p>
